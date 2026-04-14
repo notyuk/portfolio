@@ -223,6 +223,7 @@ function SpotifyCard() {
     </div>
   </div>
 );
+}
 
 function Hero({ profile }) {
   return (
