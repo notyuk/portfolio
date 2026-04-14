@@ -171,6 +171,7 @@ return (
     )}
   </div>
 );
+}
 
 function SpotifyCard() {
   const [track, setTrack] = useState<any>(null);
