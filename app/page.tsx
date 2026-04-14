@@ -2,21 +2,17 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import {
-  CloudSun,
   FileText,
-  Globe,
   GraduationCap,
   Image as ImageIcon,
   MapPin,
   Menu,
   Music,
-  RefreshCw,
-  User,
   Briefcase,
 } from "lucide-react";
 
@@ -84,12 +80,12 @@ const NAV_ITEMS = [
 function TopBar() {
   return (
     <header className="border-b border-white/10 bg-[#6b6b6f] text-white">
-      <div className="mx-auto flex w-full max-w-7xl items-start justify-between gap-6 px-4 py-5 sm:px-6 lg:px-8">
+      <div className="mx-auto flex w-full max-w-[1400px] items-start justify-between gap-6 px-6 py-6">
         <div className="min-w-0">
-          <h1 className="mt-2 text-3xl font-light leading-none sm:text-4xl">2026 april</h1>
+          <h1 className="text-4xl font-light leading-none">2026 april</h1>
         </div>
 
-        <nav className="hidden items-start gap-12 md:flex">
+        <nav className="hidden items-start gap-14 md:flex">
           <div>
             <p className="text-2xl font-light lowercase">main</p>
             <div className="mt-3 space-y-1 text-sm text-white/75">
@@ -114,10 +110,20 @@ function TopBar() {
               <a href="mailto:ykoch006@gmail.com" className="block transition hover:text-white">
                 email
               </a>
-              <a href="https://github.com/notyuk" target="_blank" rel="noreferrer" className="block transition hover:text-white">
+              <a
+                href="https://github.com/notyuk"
+                target="_blank"
+                rel="noreferrer"
+                className="block transition hover:text-white"
+              >
                 github
               </a>
-              <a href="https://yukselkoc.com" target="_blank" rel="noreferrer" className="block transition hover:text-white">
+              <a
+                href="https://yukselkoc.com"
+                target="_blank"
+                rel="noreferrer"
+                className="block transition hover:text-white"
+              >
                 home page
               </a>
             </div>
@@ -134,43 +140,28 @@ function TopBar() {
 
 function WeatherCard({ profile }) {
   const [weather, setWeather] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const fetchWeather = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${profile.weatherLatitude}&longitude=${profile.weatherLongitude}&current=temperature_2m,weather_code,wind_speed_10m&timezone=auto`;
-      const res = await fetch(url);
-      if (!res.ok) throw new Error("Failed to fetch weather");
-      const data = await res.json();
-      setWeather(data.current);
-    } catch (e) {
-      setError("Could not load weather right now.");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
-    fetchWeather();
-  }, []);
+    const fetchWeather = async () => {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${profile.weatherLatitude}&longitude=${profile.weatherLongitude}&current=temperature_2m,wind_speed_10m&timezone=auto`;
+      const res = await fetch(url);
+      const data = await res.json();
+      setWeather(data.current);
+    };
 
-return (
-  <div className="text-sm">
-    {weather && (
-      <>
-        <div className="text-2xl font-light">
-          {Math.round(weather.temperature_2m)}°C
-        </div>
-        <div className="text-xs text-black/50">
-          {profile.city}
-        </div>
-      </>
-    )}
-  </div>
-);
+    fetchWeather();
+  }, [profile.weatherLatitude, profile.weatherLongitude]);
+
+  return (
+    <div className="text-sm">
+      {weather && (
+        <>
+          <div className="text-4xl font-light">{Math.round(weather.temperature_2m)}°C</div>
+          <div className="mt-1 text-base text-black/50">{profile.city}</div>
+        </>
+      )}
+    </div>
+  );
 }
 
 function SpotifyCard() {
@@ -197,28 +188,28 @@ function SpotifyCard() {
   }, []);
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-4">
       {track?.albumImageUrl && track?.isPlaying ? (
         <img
           src={track.albumImageUrl}
           alt={track.album}
-          className="h-12 w-12 rounded-md object-cover"
+          className="h-16 w-16 rounded-lg object-cover"
         />
       ) : null}
 
       <div className="text-sm">
-        <p className="mb-1 flex items-center gap-2 text-xs font-medium text-black/60">
+        <p className="mb-1 flex items-center gap-2 text-sm font-medium text-black/60">
           <Music className="h-4 w-4" /> now listening to
         </p>
 
         {loading ? (
-          <p className="text-xs text-black/50">Loading Spotify...</p>
+          <p className="text-sm text-black/50">Loading Spotify...</p>
         ) : !track || track.error || !track.isPlaying ? (
-          <p className="text-xs text-black/50">Nothing playing right now.</p>
+          <p className="text-sm text-black/50">Nothing playing right now.</p>
         ) : (
           <div className="space-y-1">
-            <p className="text-sm font-medium">{track.title}</p>
-            <p className="text-xs text-black/60">{track.artist}</p>
+            <p className="text-lg font-medium">{track.title}</p>
+            <p className="text-base text-black/60">{track.artist}</p>
           </div>
         )}
       </div>
@@ -228,43 +219,48 @@ function SpotifyCard() {
 
 function Hero({ profile }) {
   return (
-    <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-      <Card className="overflow-hidden rounded-[2.5rem] border-0 bg-[#f5f5f5] shadow-none">
-        <CardContent className="p-8 sm:p-10">
-          <div className="mb-10 flex flex-wrap items-start justify-between gap-6">
+    <section className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+      <Card className="overflow-hidden rounded-[2.75rem] border-0 bg-[#f5f5f5] shadow-none">
+        <CardContent className="p-12 sm:p-14">
+          <div className="mb-12 flex flex-wrap items-start justify-between gap-8">
             <div>
-              <h2 className="mt-3 text-5xl font-light tracking-tight text-black sm:text-6xl">
+              <h2 className="mt-3 text-6xl font-light tracking-tight text-black sm:text-7xl">
                 {profile.name}
               </h2>
-              <p className="mt-3 text-lg text-black/60">{profile.title}</p>
+              <p className="mt-4 text-2xl text-black/60">{profile.title}</p>
             </div>
 
-            <div className="rounded-[2rem] border border-black/10 bg-white/35 px-4 py-3 text-sm text-black/60 backdrop-blur-sm">
+            <div className="rounded-[2rem] border border-black/10 bg-white/35 px-5 py-4 text-base text-black/60 backdrop-blur-sm">
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" /> {profile.location}
               </div>
-              <div className="mt-2 flex items-center gap-2">
+              <div className="mt-3 flex items-center gap-2">
                 <GraduationCap className="h-4 w-4" /> University of Reading
               </div>
             </div>
           </div>
 
-          <div className="max-w-3xl space-y-5">
+          <div className="max-w-4xl space-y-6">
             <p className="text-sm uppercase tracking-[0.28em] text-black/45">bio</p>
-            <p className="text-lg leading-8 text-black/75">{profile.bio}</p>
-            <p className="max-w-2xl leading-7 text-black/65">{profile.about}</p>
+            <p className="text-xl leading-9 text-black/75">{profile.bio}</p>
+            <p className="max-w-3xl text-lg leading-8 text-black/65">{profile.about}</p>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-2">
+          <div className="mt-10 flex flex-wrap gap-3">
             {profile.skills.map((skill) => (
-              <Badge key={skill} variant="secondary" className="rounded-full border-0 bg-white/65 px-4 py-1.5 text-black">
+              <Badge
+                key={skill}
+                variant="secondary"
+                className="rounded-full border-0 bg-white/65 px-4 py-2 text-sm text-black"
+              >
                 {skill}
               </Badge>
             ))}
           </div>
         </CardContent>
       </Card>
-      <div className="flex items-start gap-8">
+
+      <div className="flex items-start gap-10 pt-2">
         <SpotifyCard />
         <WeatherCard profile={profile} />
       </div>
@@ -276,7 +272,7 @@ function SectionTitle({ eyebrow, title }) {
   return (
     <div className="space-y-2">
       <p className="text-sm uppercase tracking-[0.28em] text-black/40">{eyebrow}</p>
-      <h2 className="text-3xl font-light tracking-tight text-black">{title}</h2>
+      <h2 className="text-4xl font-light tracking-tight text-black">{title}</h2>
     </div>
   );
 }
@@ -286,15 +282,17 @@ function CVSection({ profile }) {
     <section id="cv" className="space-y-6">
       <SectionTitle eyebrow="cv" title="curriculum vitae" />
       <Card className="rounded-[2.5rem] border border-black/10 bg-white/80 shadow-none">
-        <CardContent className="grid gap-6 p-8 lg:grid-cols-[1fr_auto] lg:items-center">
+        <CardContent className="grid gap-6 p-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <p className="text-lg leading-8 text-black/70">
+            <p className="text-xl leading-9 text-black/70">
               A second-year Computer Science student focused on frontend, backend, and building practical projects with a cleaner visual style.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Button asChild className="rounded-full bg-black text-white hover:bg-black/90">
-              <a href="/cv.pdf" target="_blank" rel="noreferrer">Open CV</a>
+              <a href="/cv.pdf" target="_blank" rel="noreferrer">
+                Open CV
+              </a>
             </Button>
             <Button asChild variant="outline" className="rounded-full border-black/15 bg-transparent">
               <a href={`mailto:${profile.email}`}>Contact</a>
@@ -309,11 +307,11 @@ function CVSection({ profile }) {
 function ProjectCard({ project }) {
   return (
     <Card className="rounded-[2rem] border border-black/10 bg-white/80 shadow-none transition-transform duration-200 hover:-translate-y-1">
-      <CardContent className="p-6">
+      <CardContent className="p-7">
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
-            <h3 className="text-lg font-medium text-black">{project.title}</h3>
-            <p className="mt-3 text-sm leading-7 text-black/60">{project.description}</p>
+            <h3 className="text-xl font-medium text-black">{project.title}</h3>
+            <p className="mt-3 text-base leading-8 text-black/60">{project.description}</p>
           </div>
           <Badge variant="outline" className="rounded-full border-black/10 whitespace-nowrap text-black/65">
             {project.status}
@@ -351,10 +349,10 @@ function PhotosBlogSection() {
       <div className="grid gap-6 md:grid-cols-3">
         {PHOTOS.map((item) => (
           <Card key={item.title} className="rounded-[2rem] border border-black/10 bg-[#d9d7d3] shadow-none">
-            <CardContent className="p-6">
+            <CardContent className="p-7">
               <div className="mb-10 aspect-[4/3] rounded-[1.5rem] border border-black/10 bg-white/30" />
-              <h3 className="text-lg font-medium text-black">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-black/60">{item.description}</p>
+              <h3 className="text-xl font-medium text-black">{item.title}</h3>
+              <p className="mt-3 text-base leading-8 text-black/60">{item.description}</p>
             </CardContent>
           </Card>
         ))}
@@ -379,10 +377,10 @@ function ContactSection({ profile }) {
 
   return (
     <Card className="rounded-[2.5rem] border border-black/10 bg-white/80 shadow-none">
-      <CardContent className="grid gap-6 p-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <CardContent className="grid gap-6 p-10 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <SectionTitle eyebrow="contact" title="get in touch" />
-          <p className="mt-4 max-w-2xl leading-8 text-black/65">
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-black/65">
             Open to internships, learning opportunities, creative work, and interesting conversations.
           </p>
         </div>
@@ -407,7 +405,7 @@ export default function PersonalPortfolioDashboard() {
     <div className="min-h-screen bg-[#efede8] text-black">
       <TopBar />
 
-      <main className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-8 sm:px-6 lg:px-8">
+      <main className="mx-auto flex w-full max-w-[1400px] flex-col gap-16 px-6 py-12">
         <Hero profile={profile} />
         <CVSection profile={profile} />
         <ProjectsSection />
