@@ -86,7 +86,6 @@ function TopBar() {
     <header className="border-b border-white/10 bg-[#6b6b6f] text-white">
       <div className="mx-auto flex w-full max-w-7xl items-start justify-between gap-6 px-4 py-5 sm:px-6 lg:px-8">
         <div className="min-w-0">
-          <p className="text-[12px] uppercase tracking-[0.35em] text-white/65">portfolio</p>
           <h1 className="mt-2 text-3xl font-light leading-none sm:text-4xl">yüksel koç</h1>
           <p className="mt-3 text-sm text-white/70">2026 april</p>
         </div>
@@ -97,7 +96,6 @@ function TopBar() {
             <div className="mt-3 space-y-1 text-sm text-white/75">
               <p>about</p>
               <p>weather</p>
-              <p>currently playing</p>
             </div>
           </div>
 
@@ -122,7 +120,7 @@ function TopBar() {
                 github
               </a>
               <a href="https://yukselkoc.com" target="_blank" rel="noreferrer" className="block transition hover:text-white">
-                website
+                home page
               </a>
             </div>
           </div>
@@ -257,11 +255,10 @@ function SpotifyCard() {
 function Hero({ profile }) {
   return (
     <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-      <Card className="overflow-hidden rounded-[2.5rem] border-0 bg-[#d7d4cf] shadow-none">
+      <Card className="overflow-hidden rounded-[2.5rem] border-0 bg-[#f5f5f5] shadow-none">
         <CardContent className="p-8 sm:p-10">
           <div className="mb-10 flex flex-wrap items-start justify-between gap-6">
             <div>
-              <p className="text-sm uppercase tracking-[0.28em] text-black/45">now</p>
               <h2 className="mt-3 text-5xl font-light tracking-tight text-black sm:text-6xl">
                 {profile.name}
               </h2>
