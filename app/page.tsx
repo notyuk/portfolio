@@ -86,7 +86,6 @@ function TopBar() {
     <header className="border-b border-white/10 bg-[#6b6b6f] text-white">
       <div className="mx-auto flex w-full max-w-7xl items-start justify-between gap-6 px-4 py-5 sm:px-6 lg:px-8">
         <div className="min-w-0">
-          <h1 className="mt-2 text-3xl font-light leading-none sm:text-4xl">yüksel koç</h1>
           <p className="mt-3 text-sm text-white/70">2026 april</p>
         </div>
 
@@ -95,7 +94,6 @@ function TopBar() {
             <p className="text-2xl font-light lowercase">main</p>
             <div className="mt-3 space-y-1 text-sm text-white/75">
               <p>about</p>
-              <p>weather</p>
             </div>
           </div>
 
