@@ -197,21 +197,31 @@ function SpotifyCard() {
   }, []);
 
   return (
-    <div className="text-sm">
-      <p className="mb-1 flex items-center gap-2 text-xs font-medium text-black/60">
-        <Music className="h-4 w-4" /> now listening to
-      </p>
+    <div className="flex items-center gap-3">
+      {track?.albumImageUrl && track?.isPlaying ? (
+        <img
+          src={track.albumImageUrl}
+          alt={track.album}
+          className="h-12 w-12 rounded-md object-cover"
+        />
+      ) : null}
 
-      {loading ? (
-        <p className="text-xs text-black/50">Loading Spotify...</p>
-      ) : !track || track.error || !track.isPlaying ? (
-        <p className="text-xs text-black/50">Nothing playing right now.</p>
-      ) : (
-        <div className="space-y-1">
-          <p className="text-sm font-medium">{track.title}</p>
-          <p className="text-xs text-black/60">{track.artist}</p>
-        </div>
-      )}
+      <div className="text-sm">
+        <p className="mb-1 flex items-center gap-2 text-xs font-medium text-black/60">
+          <Music className="h-4 w-4" /> now listening to
+        </p>
+
+        {loading ? (
+          <p className="text-xs text-black/50">Loading Spotify...</p>
+        ) : !track || track.error || !track.isPlaying ? (
+          <p className="text-xs text-black/50">Nothing playing right now.</p>
+        ) : (
+          <div className="space-y-1">
+            <p className="text-sm font-medium">{track.title}</p>
+            <p className="text-xs text-black/60">{track.artist}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -254,10 +264,9 @@ function Hero({ profile }) {
           </div>
         </CardContent>
       </Card>
-
-      <div className="grid gap-2">
-        <WeatherCard profile={profile} />
+      <div className="flex items-start gap-8">
         <SpotifyCard />
+        <WeatherCard profile={profile} />
       </div>
     </section>
   );
