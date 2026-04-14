@@ -86,7 +86,7 @@ function TopBar() {
     <header className="border-b border-white/10 bg-[#6b6b6f] text-white">
       <div className="mx-auto flex w-full max-w-7xl items-start justify-between gap-6 px-4 py-5 sm:px-6 lg:px-8">
         <div className="min-w-0">
-          <p className="mt-3 text-sm text-white/70">2026 april</p>
+          <h1 className="mt-2 text-3xl font-light leading-none sm:text-4xl">2026 april</h1>
         </div>
 
         <nav className="hidden items-start gap-12 md:flex">
@@ -157,31 +157,20 @@ function WeatherCard({ profile }) {
     fetchWeather();
   }, []);
 
-  return (
-    <Card className="rounded-[2rem] border border-black/10 bg-white/85 shadow-none backdrop-blur-sm">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="flex items-center gap-2 text-base font-medium text-black/80">
-          <CloudSun className="h-4 w-4" /> weather
-        </CardTitle>
-        <Button variant="ghost" size="icon" onClick={fetchWeather} aria-label="Refresh weather" className="rounded-full">
-          <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <p className="mb-2 text-sm text-black/55">{profile.city}</p>
-        {error ? <p className="text-sm text-red-500">{error}</p> : null}
-        {weather ? (
-          <div className="space-y-2">
-            <div className="text-4xl font-light">{Math.round(weather.temperature_2m)}°C</div>
-            <div className="text-sm text-black/60">Wind: {Math.round(weather.wind_speed_10m)} km/h</div>
-          </div>
-        ) : !error ? (
-          <p className="text-sm text-black/55">Loading current weather…</p>
-        ) : null}
-      </CardContent>
-    </Card>
-  );
-}
+return (
+  <div className="text-sm">
+    {weather && (
+      <>
+        <div className="text-2xl font-light">
+          {Math.round(weather.temperature_2m)}°C
+        </div>
+        <div className="text-xs text-black/50">
+          {profile.city}
+        </div>
+      </>
+    )}
+  </div>
+);
 
 function SpotifyCard() {
   const [track, setTrack] = useState<any>(null);
@@ -206,49 +195,34 @@ function SpotifyCard() {
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <Card className="rounded-[2rem] border border-black/10 bg-white/85 shadow-none backdrop-blur-sm">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-base font-medium text-black/80">
-          <Music className="h-4 w-4" /> currently playing
-        </CardTitle>
-      </CardHeader>
+ return (
+  <div className="flex items-center gap-3">
+    {track?.albumImageUrl && track?.isPlaying ? (
+      <img
+        src={track.albumImageUrl}
+        alt={track.album}
+        className="h-10 w-10 rounded-md object-cover"
+      />
+    ) : null}
 
-      <CardContent>
-        {loading ? (
-          <p className="text-sm text-black/55">Loading Spotify...</p>
-        ) : !track || track.error || !track.isPlaying ? (
-          <p className="text-sm text-black/55">Nothing playing right now.</p>
-        ) : (
-          <div className="space-y-3">
-            {track.albumImageUrl ? (
-              <img
-                src={track.albumImageUrl}
-                alt={track.album}
-                className="h-24 w-24 rounded-2xl object-cover"
-              />
-            ) : null}
+    <div>
+      <p className="flex items-center gap-2 text-xs font-medium text-black/60">
+        <Music className="h-4 w-4" /> now listening to
+      </p>
 
-            <div>
-              <p className="text-lg font-medium">{track.title}</p>
-              <p className="text-sm text-black/60">{track.artist}</p>
-              <p className="text-sm text-black/60">{track.album}</p>
-            </div>
-
-            <a
-              href={track.songUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex text-sm underline underline-offset-4"
-            >
-              Open on Spotify
-            </a>
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
+      {loading ? (
+        <p className="text-xs text-black/50">Loading Spotify...</p>
+      ) : !track || track.error || !track.isPlaying ? (
+        <p className="text-xs text-black/50">Nothing playing right now.</p>
+      ) : (
+        <>
+          <p className="text-sm font-medium">{track.title}</p>
+          <p className="text-xs text-black/60">{track.artist}</p>
+        </>
+      )}
+    </div>
+  </div>
+);
 
 function Hero({ profile }) {
   return (
@@ -289,7 +263,7 @@ function Hero({ profile }) {
         </CardContent>
       </Card>
 
-      <div className="grid gap-6">
+      <div className="grid gap-2">
         <WeatherCard profile={profile} />
         <SpotifyCard />
       </div>
