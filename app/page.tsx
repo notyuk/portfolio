@@ -1,16 +1,28 @@
- // @ts-nocheck
- "use client";
+// @ts-nocheck
+"use client";
 
 import React, { useEffect, useMemo, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { CloudSun, Globe, GraduationCap, Laptop, MapPin, Music, RefreshCw, User } from "lucide-react";
+import {
+  CloudSun,
+  FileText,
+  Globe,
+  GraduationCap,
+  Image as ImageIcon,
+  MapPin,
+  Menu,
+  Music,
+  RefreshCw,
+  User,
+  Briefcase,
+} from "lucide-react";
 
 const DEFAULT_PROFILE = {
   name: "Yüksel Koç",
-  title: "Computer Science Student",  
+  title: "Computer Science Student",
   location: "Reading / London",
   bio: "I’m a second-year Computer Science student interested in backend development, frontend design, and building projects that feel useful and personal.",
   about:
@@ -22,12 +34,6 @@ const DEFAULT_PROFILE = {
   city: "Reading",
   weatherLatitude: 51.4543,
   weatherLongitude: -0.9781,
-  spotifyNowPlaying: {
-    track: "Add your Spotify integration",
-    artist: "Show your current track here",
-    album: "Now Playing",
-    url: "https://open.spotify.com/",
-  },
 };
 
 const PROJECTS = [
@@ -54,17 +60,79 @@ const PROJECTS = [
   },
 ];
 
-function SectionHeading({ icon: Icon, title, subtitle }) {
+const PHOTOS = [
+  {
+    title: "City Notes",
+    description: "A place for photos, visual ideas, and moments I want to keep on the site.",
+  },
+  {
+    title: "Behind the Work",
+    description: "Small updates on projects, learning, design choices, and whatever I’m building.",
+  },
+  {
+    title: "Music / Blog",
+    description: "A section for writing, playlists, music thoughts, or short posts.",
+  },
+];
+
+const NAV_ITEMS = [
+  { label: "cv", href: "#cv", icon: FileText },
+  { label: "projects", href: "#projects", icon: Briefcase },
+  { label: "photos/blog", href: "#photos", icon: ImageIcon },
+];
+
+function TopBar() {
   return (
-    <div className="flex items-start gap-3">
-      <div className="rounded-2xl bg-black/5 p-3">
-        <Icon className="h-5 w-5" />
+    <header className="border-b border-white/10 bg-[#6b6b6f] text-white">
+      <div className="mx-auto flex w-full max-w-7xl items-start justify-between gap-6 px-4 py-5 sm:px-6 lg:px-8">
+        <div className="min-w-0">
+          <p className="text-[12px] uppercase tracking-[0.35em] text-white/65">portfolio</p>
+          <h1 className="mt-2 text-3xl font-light leading-none sm:text-4xl">yüksel koç</h1>
+          <p className="mt-3 text-sm text-white/70">2026 april</p>
+        </div>
+
+        <nav className="hidden items-start gap-12 md:flex">
+          <div>
+            <p className="text-2xl font-light lowercase">main</p>
+            <div className="mt-3 space-y-1 text-sm text-white/75">
+              <p>about</p>
+              <p>weather</p>
+              <p>currently playing</p>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-2xl font-light lowercase">pages</p>
+            <div className="mt-3 space-y-1 text-sm text-white/75">
+              {NAV_ITEMS.map((item) => (
+                <a key={item.label} href={item.href} className="block transition hover:text-white">
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-2xl font-light lowercase">contact</p>
+            <div className="mt-3 space-y-1 text-sm text-white/75">
+              <a href="mailto:ykoch006@gmail.com" className="block transition hover:text-white">
+                email
+              </a>
+              <a href="https://github.com/notyuk" target="_blank" rel="noreferrer" className="block transition hover:text-white">
+                github
+              </a>
+              <a href="https://yukselkoc.com" target="_blank" rel="noreferrer" className="block transition hover:text-white">
+                website
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        <button className="md:hidden">
+          <Menu className="h-6 w-6 text-white" />
+        </button>
       </div>
-      <div>
-        <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
-        {subtitle ? <p className="text-sm text-muted-foreground">{subtitle}</p> : null}
-      </div>
-    </div>
+    </header>
   );
 }
 
@@ -94,26 +162,25 @@ function WeatherCard({ profile }) {
   }, []);
 
   return (
-    <Card className="rounded-2xl shadow-sm">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="flex items-center gap-2 text-base">
-          <CloudSun className="h-4 w-4" /> Weather
+    <Card className="rounded-[2rem] border border-black/10 bg-white/85 shadow-none backdrop-blur-sm">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="flex items-center gap-2 text-base font-medium text-black/80">
+          <CloudSun className="h-4 w-4" /> weather
         </CardTitle>
-        <Button variant="ghost" size="icon" onClick={fetchWeather} aria-label="Refresh weather">
+        <Button variant="ghost" size="icon" onClick={fetchWeather} aria-label="Refresh weather" className="rounded-full">
           <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
         </Button>
       </CardHeader>
       <CardContent>
-        <p className="mb-2 text-sm text-muted-foreground">{profile.city}</p>
+        <p className="mb-2 text-sm text-black/55">{profile.city}</p>
         {error ? <p className="text-sm text-red-500">{error}</p> : null}
         {weather ? (
           <div className="space-y-2">
-            <div className="text-3xl font-semibold">{Math.round(weather.temperature_2m)}°C</div>
-            <div className="text-sm text-muted-foreground">Wind: {Math.round(weather.wind_speed_10m)} km/h</div>
-            <div className="text-sm text-muted-foreground">Weather code: {weather.weather_code}</div>
+            <div className="text-4xl font-light">{Math.round(weather.temperature_2m)}°C</div>
+            <div className="text-sm text-black/60">Wind: {Math.round(weather.wind_speed_10m)} km/h</div>
           </div>
         ) : !error ? (
-          <p className="text-sm text-muted-foreground">Loading current weather…</p>
+          <p className="text-sm text-black/55">Loading current weather…</p>
         ) : null}
       </CardContent>
     </Card>
@@ -124,54 +191,59 @@ function SpotifyCard() {
   const [track, setTrack] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-  const fetchNowPlaying = async () => {
-    const res = await fetch("/api/spotify/now-playing");
-    const data = await res.json();
-    setTrack(data);
-    setLoading(false);
-  };
+  useEffect(() => {
+    const fetchNowPlaying = async () => {
+      try {
+        const res = await fetch("/api/spotify/now-playing");
+        const data = await res.json();
+        setTrack(data);
+      } catch (error) {
+        setTrack({ error: true });
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  fetchNowPlaying();
-  const interval = setInterval(fetchNowPlaying, 20000);
+    fetchNowPlaying();
+    const interval = setInterval(fetchNowPlaying, 20000);
 
-  return () => clearInterval(interval);
-}, []);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <Card className="rounded-2xl shadow-sm">
+    <Card className="rounded-[2rem] border border-black/10 bg-white/85 shadow-none backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-base">
-          <Music className="h-4 w-4" /> Now Playing
+        <CardTitle className="flex items-center gap-2 text-base font-medium text-black/80">
+          <Music className="h-4 w-4" /> currently playing
         </CardTitle>
       </CardHeader>
 
       <CardContent>
         {loading ? (
-          <p className="text-sm text-muted-foreground">Loading Spotify...</p>
+          <p className="text-sm text-black/55">Loading Spotify...</p>
         ) : !track || track.error || !track.isPlaying ? (
-          <p className="text-sm text-muted-foreground">Nothing playing right now.</p>
+          <p className="text-sm text-black/55">Nothing playing right now.</p>
         ) : (
           <div className="space-y-3">
             {track.albumImageUrl ? (
               <img
                 src={track.albumImageUrl}
                 alt={track.album}
-                className="h-20 w-20 rounded-xl object-cover"
+                className="h-24 w-24 rounded-2xl object-cover"
               />
             ) : null}
 
             <div>
-              <p className="font-semibold">{track.title}</p>
-              <p className="text-sm text-muted-foreground">{track.artist}</p>
-              <p className="text-sm text-muted-foreground">{track.album}</p>
+              <p className="text-lg font-medium">{track.title}</p>
+              <p className="text-sm text-black/60">{track.artist}</p>
+              <p className="text-sm text-black/60">{track.album}</p>
             </div>
 
             <a
               href={track.songUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex text-sm font-medium underline underline-offset-4"
+              className="inline-flex text-sm underline underline-offset-4"
             >
               Open on Spotify
             </a>
@@ -184,93 +256,102 @@ useEffect(() => {
 
 function Hero({ profile }) {
   return (
-    <section className="grid gap-6 lg:grid-cols-[1.35fr_0.95fr]">
-      <Card className="rounded-3xl border-0 shadow-md">
-        <CardContent className="p-8">
-          <div className="mb-4 inline-flex rounded-full bg-black px-3 py-1 text-sm font-medium text-white">
-            Personal Portfolio Dashboard
+    <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+      <Card className="overflow-hidden rounded-[2.5rem] border-0 bg-[#d7d4cf] shadow-none">
+        <CardContent className="p-8 sm:p-10">
+          <div className="mb-10 flex flex-wrap items-start justify-between gap-6">
+            <div>
+              <p className="text-sm uppercase tracking-[0.28em] text-black/45">now</p>
+              <h2 className="mt-3 text-5xl font-light tracking-tight text-black sm:text-6xl">
+                {profile.name}
+              </h2>
+              <p className="mt-3 text-lg text-black/60">{profile.title}</p>
+            </div>
+
+            <div className="rounded-[2rem] border border-black/10 bg-white/35 px-4 py-3 text-sm text-black/60 backdrop-blur-sm">
+              <div className="flex items-center gap-2">
+                <MapPin className="h-4 w-4" /> {profile.location}
+              </div>
+              <div className="mt-2 flex items-center gap-2">
+                <GraduationCap className="h-4 w-4" /> University of Reading
+              </div>
+            </div>
           </div>
 
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            {profile.name}
-          </h1>
-
-          <p className="mt-2 text-lg text-muted-foreground">{profile.title}</p>
-
-          <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-2">
-              <MapPin className="h-4 w-4" /> {profile.location}
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <GraduationCap className="h-4 w-4" /> University of Reading
-            </span>
+          <div className="max-w-3xl space-y-5">
+            <p className="text-sm uppercase tracking-[0.28em] text-black/45">bio</p>
+            <p className="text-lg leading-8 text-black/75">{profile.bio}</p>
+            <p className="max-w-2xl leading-7 text-black/65">{profile.about}</p>
           </div>
 
-          <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground">
-            {profile.bio}
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
+          <div className="mt-8 flex flex-wrap gap-2">
             {profile.skills.map((skill) => (
-              <Badge key={skill} variant="secondary" className="rounded-full px-3 py-1">
+              <Badge key={skill} variant="secondary" className="rounded-full border-0 bg-white/65 px-4 py-1.5 text-black">
                 {skill}
               </Badge>
             ))}
           </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild className="rounded-2xl">
-              <a href={`mailto:${profile.email}`}>Contact Me</a>
-            </Button>
-
-              <Button asChild variant="outline" className="rounded-2xl">
-                <a href={profile.github} target="_blank" rel="noreferrer">
-                  GitHub
-                </a>
-            </Button>
-        </div>
         </CardContent>
       </Card>
 
       <div className="grid gap-6">
         <WeatherCard profile={profile} />
-        <SpotifyCard profile={profile} />
+        <SpotifyCard />
       </div>
     </section>
   );
 }
 
-function AboutSection({ profile }) {
+function SectionTitle({ eyebrow, title }) {
   return (
-    <Card className="rounded-3xl shadow-sm">
-      <CardContent className="p-8">
-        <SectionHeading
-          icon={User}
-          title="About Me"
-          subtitle="A quick overview of who I am and what I’m exploring right now."
-        />
-        <p className="mt-6 max-w-3xl leading-7 text-muted-foreground">{profile.about}</p>
-      </CardContent>
-    </Card>
+    <div className="space-y-2">
+      <p className="text-sm uppercase tracking-[0.28em] text-black/40">{eyebrow}</p>
+      <h2 className="text-3xl font-light tracking-tight text-black">{title}</h2>
+    </div>
+  );
+}
+
+function CVSection({ profile }) {
+  return (
+    <section id="cv" className="space-y-6">
+      <SectionTitle eyebrow="cv" title="curriculum vitae" />
+      <Card className="rounded-[2.5rem] border border-black/10 bg-white/80 shadow-none">
+        <CardContent className="grid gap-6 p-8 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <p className="text-lg leading-8 text-black/70">
+              A second-year Computer Science student focused on frontend, backend, and building practical projects with a cleaner visual style.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button asChild className="rounded-full bg-black text-white hover:bg-black/90">
+              <a href="/cv.pdf" target="_blank" rel="noreferrer">Open CV</a>
+            </Button>
+            <Button asChild variant="outline" className="rounded-full border-black/15 bg-transparent">
+              <a href={`mailto:${profile.email}`}>Contact</a>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </section>
   );
 }
 
 function ProjectCard({ project }) {
   return (
-    <Card className="rounded-3xl shadow-sm transition-transform duration-200 hover:-translate-y-1">
+    <Card className="rounded-[2rem] border border-black/10 bg-white/80 shadow-none transition-transform duration-200 hover:-translate-y-1">
       <CardContent className="p-6">
-        <div className="mb-3 flex items-start justify-between gap-3">
+        <div className="mb-4 flex items-start justify-between gap-3">
           <div>
-            <h3 className="text-lg font-semibold">{project.title}</h3>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">{project.description}</p>
+            <h3 className="text-lg font-medium text-black">{project.title}</h3>
+            <p className="mt-3 text-sm leading-7 text-black/60">{project.description}</p>
           </div>
-          <Badge variant="outline" className="rounded-full whitespace-nowrap">
+          <Badge variant="outline" className="rounded-full border-black/10 whitespace-nowrap text-black/65">
             {project.status}
           </Badge>
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="rounded-full">
+            <Badge key={tag} variant="secondary" className="rounded-full bg-black/5 text-black/75">
               {tag}
             </Badge>
           ))}
@@ -282,15 +363,30 @@ function ProjectCard({ project }) {
 
 function ProjectsSection() {
   return (
-    <section className="space-y-6">
-      <SectionHeading
-        icon={Laptop}
-        title="Projects"
-        subtitle="Some of the things I’m building and exploring."
-      />
+    <section id="projects" className="space-y-6">
+      <SectionTitle eyebrow="projects" title="selected work" />
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {PROJECTS.map((project) => (
           <ProjectCard key={project.title} project={project} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PhotosBlogSection() {
+  return (
+    <section id="photos" className="space-y-6">
+      <SectionTitle eyebrow="photos / blog" title="visuals and notes" />
+      <div className="grid gap-6 md:grid-cols-3">
+        {PHOTOS.map((item) => (
+          <Card key={item.title} className="rounded-[2rem] border border-black/10 bg-[#d9d7d3] shadow-none">
+            <CardContent className="p-6">
+              <div className="mb-10 aspect-[4/3] rounded-[1.5rem] border border-black/10 bg-white/30" />
+              <h3 className="text-lg font-medium text-black">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-black/60">{item.description}</p>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </section>
@@ -312,25 +408,21 @@ function ContactSection({ profile }) {
   };
 
   return (
-    <Card className="rounded-3xl shadow-sm">
+    <Card className="rounded-[2.5rem] border border-black/10 bg-white/80 shadow-none">
       <CardContent className="grid gap-6 p-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
-          <SectionHeading
-            icon={Globe}
-            title="Get in Touch"
-            subtitle="Open to internships, learning opportunities, and interesting conversations."
-          />
-          <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
-            I’m currently building my skills through projects and coursework, and I’m looking for ways to gain more real-world experience.
+          <SectionTitle eyebrow="contact" title="get in touch" />
+          <p className="mt-4 max-w-2xl leading-8 text-black/65">
+            Open to internships, learning opportunities, creative work, and interesting conversations.
           </p>
         </div>
-        <div className="rounded-3xl border bg-black/[0.03] p-5">
-          <label className="mb-2 block text-sm font-medium">Email</label>
+        <div className="rounded-[2rem] border border-black/10 bg-black/[0.03] p-5">
+          <label className="mb-2 block text-sm font-medium text-black/70">Email</label>
           <div className="flex gap-2">
-            <Input value={profile.email} readOnly className="rounded-2xl" />
-            <Button onClick={copyEmail} className="rounded-2xl">{copied ? "Copied" : "Copy"}</Button>
-          </div>
-          <div className="mt-4 flex flex-wrap gap-3">
+            <Input value={profile.email} readOnly className="rounded-full border-black/10 bg-white" />
+            <Button onClick={copyEmail} className="rounded-full bg-black text-white hover:bg-black/90">
+              {copied ? "Copied" : "Copy"}
+            </Button>
           </div>
         </div>
       </CardContent>
@@ -340,14 +432,16 @@ function ContactSection({ profile }) {
 
 export default function PersonalPortfolioDashboard() {
   const [profile] = useState(DEFAULT_PROFILE);
-  
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-black/[0.03] text-black">
-      <main className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 pt-4 pb-8 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#efede8] text-black">
+      <TopBar />
+
+      <main className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-8 sm:px-6 lg:px-8">
         <Hero profile={profile} />
-        <AboutSection profile={profile} />
+        <CVSection profile={profile} />
         <ProjectsSection />
+        <PhotosBlogSection />
         <ContactSection profile={profile} />
       </main>
     </div>
