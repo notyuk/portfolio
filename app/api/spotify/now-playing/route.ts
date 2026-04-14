@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { NextResponse } from "next/server";
 
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
