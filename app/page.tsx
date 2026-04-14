@@ -331,9 +331,6 @@ function ContactSection({ profile }) {
             <Button onClick={copyEmail} className="rounded-2xl">{copied ? "Copied" : "Copy"}</Button>
           </div>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Button asChild variant="outline" className="rounded-2xl">
-              <a href={profile.website} target="_blank" rel="noreferrer">Website</a>
-            </Button>
           </div>
         </div>
       </CardContent>
