@@ -17,6 +17,7 @@ const DEFAULT_PROFILE = {
     "I enjoy combining technical work with design. Right now, I’m exploring backend systems, APIs, and data while also building cleaner frontend experiences.",
   skills: ["Python", "Java", "C", "Frontend", "Backend", "APIs"],
   email: "ykoch006@gmail.com",
+  github: "https://github.com/notyuk",
   website: "https://yukselkoc.com",
   city: "Reading",
   weatherLatitude: 51.4543,
@@ -221,7 +222,13 @@ function Hero({ profile }) {
             <Button asChild className="rounded-2xl">
               <a href={`mailto:${profile.email}`}>Contact Me</a>
             </Button>
-          </div>
+
+              <Button asChild variant="outline" className="rounded-2xl">
+                <a href={profile.github} target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+            </Button>
+        </div>
         </CardContent>
       </Card>
 
