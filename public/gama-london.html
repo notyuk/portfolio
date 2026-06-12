@@ -304,17 +304,22 @@ em { font-style: italic; }
 }
 .marquee {
   display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.marquee__track {
+  display: flex;
   white-space: nowrap;
-  animation: marquee 28s linear infinite;
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--stone);
   font-family: var(--body);
   font-weight: 500;
+  padding-right: 2rem;
 }
 @keyframes marquee {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
@@ -930,16 +935,24 @@ em { font-style: italic; }
   <!-- ───── MARQUEE ───── -->
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee">
-      <span>Interior Design&ensp;·&ensp;</span>
-      <span>Bespoke Joinery&ensp;·&ensp;</span>
-      <span>Full Renovation&ensp;·&ensp;</span>
-      <span>Kitchen & Bathrooms&ensp;·&ensp;</span>
-      <span>Furniture Curation&ensp;·&ensp;</span>
-      <span>Interior Design&ensp;·&ensp;</span>
-      <span>Bespoke Joinery&ensp;·&ensp;</span>
-      <span>Full Renovation&ensp;·&ensp;</span>
-      <span>Kitchen & Bathrooms&ensp;·&ensp;</span>
-      <span>Furniture Curation&ensp;·&ensp;</span>
+      <div class="marquee__track">
+        <span>Interior Design&ensp;·&ensp;</span>
+        <span>Bespoke Joinery&ensp;·&ensp;</span>
+        <span>Full Renovation&ensp;·&ensp;</span>
+        <span>Kitchen &amp; Bathrooms&ensp;·&ensp;</span>
+        <span>Furniture Curation&ensp;·&ensp;</span>
+        <span>Project Management&ensp;·&ensp;</span>
+        <span>Procurement &amp; Sourcing&ensp;·&ensp;</span>
+      </div>
+      <div class="marquee__track" aria-hidden="true">
+        <span>Interior Design&ensp;·&ensp;</span>
+        <span>Bespoke Joinery&ensp;·&ensp;</span>
+        <span>Full Renovation&ensp;·&ensp;</span>
+        <span>Kitchen &amp; Bathrooms&ensp;·&ensp;</span>
+        <span>Furniture Curation&ensp;·&ensp;</span>
+        <span>Project Management&ensp;·&ensp;</span>
+        <span>Procurement &amp; Sourcing&ensp;·&ensp;</span>
+      </div>
     </div>
   </div>
 
