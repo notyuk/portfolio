@@ -188,7 +188,7 @@ function SpotifyCard() {
   }, []);
 
   return (
-    <div className="flex items-center gap-8>
+    <div className="flex items-center gap-8">
       {track?.albumImageUrl && track?.isPlaying ? (
         <img
           src={track.albumImageUrl}
