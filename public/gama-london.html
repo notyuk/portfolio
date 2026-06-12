@@ -598,6 +598,83 @@ em { font-style: italic; }
 }
 
 
+/* ─── PORTFOLIO ─── */
+.portfolio {
+  padding: var(--space-xxl) clamp(2rem, 6vw, 6rem);
+  background: var(--bg-light);
+  border-top: 1px solid var(--divider);
+}
+.portfolio__header {
+  margin-bottom: var(--space-xl);
+}
+.portfolio__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+.portfolio__project {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
+}
+.portfolio__project--reverse {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+.portfolio__project--reverse .portfolio__image { order: 2; }
+.portfolio__project--reverse .portfolio__info  { order: 1; }
+
+.portfolio__image {
+  height: clamp(300px, 45vh, 580px);
+  border-radius: var(--radius);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.portfolio__image::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 1rem; left: 1.2rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(247,245,240,0.65);
+  font-family: var(--body);
+}
+.portfolio__image--01 { background: linear-gradient(150deg, #c8bfb0 0%, #9a8b7a 100%); }
+.portfolio__image--02 { background: linear-gradient(150deg, #d8d0c4 0%, #a89888 100%); }
+
+.portfolio__num {
+  font-family: var(--body);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  display: block;
+  margin-bottom: var(--space-s);
+}
+.portfolio__info h3 { margin-bottom: 0.5rem; }
+.portfolio__location {
+  font-size: 0.82rem;
+  color: var(--stone);
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-m);
+  font-family: var(--body);
+}
+.portfolio__info p {
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  max-width: 42ch;
+}
+
+@media (max-width: 768px) {
+  .portfolio__project,
+  .portfolio__project--reverse { grid-template-columns: 1fr; }
+  .portfolio__project--reverse .portfolio__image { order: 0; }
+  .portfolio__project--reverse .portfolio__info  { order: 0; }
+}
+
 /* ─── CONTACT ─── */
 .contact {
   padding: var(--space-xxl) clamp(2rem, 6vw, 6rem);
@@ -841,7 +918,7 @@ em { font-style: italic; }
     </div>
     <div class="hero__copy">
       <p class="eyebrow">London · Est. 2009</p>
-      <h1>Spaces that<br/><em>breathe.</em></h1>
+      <h1>Tailored interiors<br/>defined by<br/><em>craftsmanship.</em></h1>
       <a href="#contact" class="btn btn--ghost">Begin a conversation</a>
     </div>
     <div class="hero__scroll-hint">
@@ -870,8 +947,9 @@ em { font-style: italic; }
   <section class="vision" id="vision">
     <div class="vision__text">
       <p class="eyebrow">Our Philosophy</p>
-      <h2>Craft that<br/>outlasts<br/>its moment.</h2>
-      <p class="body-copy">We work with a small number of clients each year — those who understand that a considered interior is not decoration, but architecture of the everyday.</p>
+      <h2>Thoughtful.<br/>Layered.<br/><em>Deeply personal.</em></h2>
+      <p class="body-copy">A boutique residential interior studio specialising in bespoke joinery, procurement and full fit-out coordination — backed by decades of experience across London, Turkey and Cyprus.</p>
+      <p class="body-copy" style="margin-top:1.2rem">International project exposure. Bespoke production capabilities. Integrated procurement. End-to-end delivery.</p>
       <a href="#contact" class="btn btn--dark">Request our portfolio</a>
     </div>
     <div class="vision__image-stack">
@@ -884,7 +962,7 @@ em { font-style: italic; }
   <section class="services" id="services">
     <div class="services__header">
       <p class="eyebrow">What We Do</p>
-      <h2>Every commission,<br/><em>entirely yours.</em></h2>
+      <h2>An integrated<br/><em>approach to every home.</em></h2>
     </div>
 
     <div class="services__grid">
@@ -892,7 +970,7 @@ em { font-style: italic; }
         <div class="service-card__image service-card__image--design"></div>
         <div class="service-card__body">
           <h3>Interior Design</h3>
-          <p>Spatial planning, material selection, and complete concept direction — from first sketch to final reveal.</p>
+          <p>Concept development, space planning, material and finishes selection, lighting design direction, FF&amp;E specification and styling direction.</p>
           <span class="service-card__link">Enquire →</span>
         </div>
       </a>
@@ -900,8 +978,8 @@ em { font-style: italic; }
       <a href="#contact" class="service-card">
         <div class="service-card__image service-card__image--renovation"></div>
         <div class="service-card__body">
-          <h3>Full Renovation</h3>
-          <p>End-to-end project management, structural works, and finishes — one studio, total accountability.</p>
+          <h3>Renovation & Fit-Out</h3>
+          <p>Full interior fit-out coordination, bespoke joinery installation, material coordination, lighting, furniture procurement and snagging through to handover.</p>
           <span class="service-card__link">Enquire →</span>
         </div>
       </a>
@@ -909,8 +987,8 @@ em { font-style: italic; }
       <a href="#contact" class="service-card">
         <div class="service-card__image service-card__image--kitchen"></div>
         <div class="service-card__body">
-          <h3>Bespoke Kitchens</h3>
-          <p>Hand-crafted cabinetry designed around your life, your light, and your materials.</p>
+          <h3>Bespoke Joinery</h3>
+          <p>Wardrobes, dressing rooms, walk-in closets, wall panelling, media units, vanity units, kitchens and custom furniture — all made to specification.</p>
           <span class="service-card__link">Enquire →</span>
         </div>
       </a>
@@ -918,8 +996,8 @@ em { font-style: italic; }
       <a href="#contact" class="service-card">
         <div class="service-card__image service-card__image--joinery"></div>
         <div class="service-card__body">
-          <h3>Joinery & Furniture</h3>
-          <p>Wardrobes, libraries, built-in pieces and loose furniture — all made to measure in our workshop.</p>
+          <h3>Procurement & Sourcing</h3>
+          <p>Furniture sourcing, lighting specification, rugs, textiles, artwork and decorative accessories — fully coordinated from supplier liaison through to delivery.</p>
           <span class="service-card__link">Enquire →</span>
         </div>
       </a>
@@ -927,17 +1005,17 @@ em { font-style: italic; }
       <a href="#contact" class="service-card">
         <div class="service-card__image service-card__image--bathroom"></div>
         <div class="service-card__body">
-          <h3>Bespoke Bathrooms</h3>
-          <p>Serene retreats designed with intention — stone, brass, and silence.</p>
+          <h3>Project Management</h3>
+          <p>Contractor and supplier coordination, site reviews, procurement tracking, timeline management, quality review and installation supervision.</p>
           <span class="service-card__link">Enquire →</span>
         </div>
       </a>
 
       <a href="#contact" class="service-card service-card--featured">
         <div class="service-card__body service-card__body--featured">
-          <p class="eyebrow">Boutique Consignments</p>
-          <h3>Curated Object Sourcing</h3>
-          <p>We access rare and archive pieces through a private network of dealers, galleries, and ateliers — available exclusively to our clients.</p>
+          <p class="eyebrow">How We Work With You</p>
+          <h3>Service Formats</h3>
+          <p>From a focused design consultation to a full turnkey fit-out — we tailor our involvement to your project and timeline.</p>
           <span class="service-card__link">Speak to us →</span>
         </div>
       </a>
@@ -948,8 +1026,8 @@ em { font-style: italic; }
   <div class="full-bleed-image" data-label="Drawing Room — Holland Park">
     <div class="full-bleed-image__overlay">
       <blockquote>
-        "The room should feel like the person who lives in it — not the designer."
-        <cite>— Gama London</cite>
+        "We create homes shaped through timeless design principles rather than trends."
+        <cite>— Gama London, Design Philosophy</cite>
       </blockquote>
     </div>
   </div>
@@ -972,36 +1050,36 @@ em { font-style: italic; }
       <div class="process__step">
         <span class="process__num">02</span>
         <div class="process__content">
-          <h4>Concept & Scope</h4>
-          <p>A week later, we return with an initial design direction, full work scope, and transparent budget breakdown.</p>
+          <h4>Concept Design</h4>
+          <p>An initial design direction is developed — spatial planning, mood, material palette and a clear vision for your home.</p>
         </div>
       </div>
       <div class="process__step">
         <span class="process__num">03</span>
         <div class="process__content">
-          <h4>Material Selection</h4>
-          <p>Guided by our designers, you select every surface, finish, and fitting — we source, coordinate, and order everything.</p>
+          <h4>Design Development</h4>
+          <p>Concepts are refined into detailed drawings, specifications and presentations ready for your approval.</p>
         </div>
       </div>
       <div class="process__step">
         <span class="process__num">04</span>
         <div class="process__content">
-          <h4>Workshop Production</h4>
-          <p>Bespoke joinery and cabinetry are crafted in our London workshop under the same roof as our design studio.</p>
+          <h4>Procurement & Production</h4>
+          <p>Bespoke joinery enters production. Furniture, lighting and materials are sourced, ordered and tracked.</p>
         </div>
       </div>
       <div class="process__step">
         <span class="process__num">05</span>
         <div class="process__content">
-          <h4>Transformation</h4>
-          <p>Our site teams work with care and precision — every trade sequenced, every detail tracked, no surprises.</p>
+          <h4>Project Management</h4>
+          <p>Our team coordinates every contractor and supplier on site — timeline, quality and communication all managed by us.</p>
         </div>
       </div>
       <div class="process__step">
         <span class="process__num">06</span>
         <div class="process__content">
-          <h4>Completion</h4>
-          <p>A white-glove handover — your home, immaculate and entirely your own.</p>
+          <h4>Installation & Handover</h4>
+          <p>A thorough snagging process and white-glove handover — your home, immaculate and entirely your own.</p>
         </div>
       </div>
     </div>
@@ -1031,12 +1109,40 @@ em { font-style: italic; }
     </div>
   </section>
 
+  <!-- ───── PORTFOLIO ───── -->
+  <section class="portfolio" id="portfolio">
+    <div class="portfolio__header">
+      <p class="eyebrow">Selected Work</p>
+      <h2>Recent<br/><em>commissions.</em></h2>
+    </div>
+    <div class="portfolio__grid">
+      <div class="portfolio__project">
+        <div class="portfolio__image portfolio__image--01" data-label="South Kensington, London"></div>
+        <div class="portfolio__info">
+          <span class="portfolio__num">Project 01</span>
+          <h3>South Kensington Townhouse</h3>
+          <p class="portfolio__location">London, United Kingdom</p>
+          <p>A multi-storey townhouse renovation combining contemporary furnishings with traditional architectural detailing. Bespoke joinery, custom furnishings, decorative lighting, material selection and interior styling throughout.</p>
+        </div>
+      </div>
+      <div class="portfolio__project portfolio__project--reverse">
+        <div class="portfolio__image portfolio__image--02" data-label="One Hyde Park, London"></div>
+        <div class="portfolio__info">
+          <span class="portfolio__num">Project 02</span>
+          <h3>One Hyde Park</h3>
+          <p class="portfolio__location">London, United Kingdom</p>
+          <p>A bespoke interior refurbishment within one of London's most prestigious residential developments. Appointed as principal contractor — comprehensive bespoke joinery, decorative finishes, electrical works and specialist marble installations, coordinated from in-house production through to on-site execution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ───── CONTACT ───── -->
   <section class="contact" id="contact">
     <div class="contact__header">
       <p class="eyebrow">Begin Here</p>
       <h2>Tell us<br/>about your home.</h2>
-      <p class="body-copy">We take on a limited number of residential commissions each year. We would love to hear about yours.</p>
+      <p class="body-copy">We work with a select number of residential clients each year across London and internationally. We would love to hear about your project.</p>
     </div>
 
     <div class="contact__body">
