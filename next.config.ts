@@ -1,18 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: "/gama-cyprus",
-        destination: "/gama-cyprus/",
-        permanent: false,
+        destination: "/gama-cyprus/index.html",
       },
-    ];
-  },
-
-  async rewrites() {
-    return [
       {
         source: "/gama-cyprus/",
         destination: "/gama-cyprus/index.html",
