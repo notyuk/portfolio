@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advertising — Gama Cyprus</title>
+<meta name="description" content="Exhibition stands, signage and retail displays designed and built by Gama Cyprus.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* ---------- Reset ---------- */
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font:inherit;cursor:pointer;}
+  ul{margin:0;padding:0;list-style:none;}
+  h1,h2,h3,p{margin:0;}
+
+  /* ---------- Tokens ---------- */
+  :root{
+    --bg:#F5F1EA;
+    --bg-alt:#ECE3D6;
+    --ink:#2B2622;
+    --ink-soft:#6B5F52;
+    --line:#DDD2BE;
+    --clay:#B1734A;
+    --clay-text:#8A5536;
+    --slate:#3E4B52;
+    --accent:var(--ink);
+    --accent-soft: color-mix(in srgb, var(--accent) 16%, var(--bg-alt));
+    --max:1220px;
+    --gutter:clamp(1.5rem,5vw,4rem);
+    --section-pad:clamp(4.5rem,11vw,8.5rem);
+    --radius:3px;
+    font-size:17px;
+  }
+
+  body.theme-furniture{ --accent:var(--clay-text); }
+  body.theme-ad{ --accent:var(--slate); }
+
+  /* ---------- Base ---------- */
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    color:var(--ink);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:0.78rem;
+    font-weight:500;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:0.55rem;
+  }
+  .lede{
+    font-size:1.1rem;
+    color:var(--ink-soft);
+    max-width:34ch;
+  }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 var(--gutter); }
+  section{ padding:var(--section-pad) 0; }
+  .hairline{ border-top:1px solid var(--line); }
+
+  .mark{ display:inline-block; width:13px; height:13px; color:var(--accent); flex-shrink:0; }
+  .mark path{ stroke:currentColor; stroke-width:1.1; }
+
+  /* ---------- Header ---------- */
+  .site-header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(245,241,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-header .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1.5rem; padding-top:1.15rem; padding-bottom:1.15rem;
+  }
+  .logo{ font-family:'Fraunces',serif; font-weight:600; font-size:1.25rem; letter-spacing:-0.01em; }
+  .logo small{
+    display:block; font-family:'Space Grotesk',sans-serif; font-weight:500;
+    font-size:0.62rem; letter-spacing:0.22em; color:var(--ink-soft); margin-top:0.1rem;
+  }
+  nav.main-nav{ display:flex; align-items:center; gap:clamp(1rem,3vw,2.1rem); flex-wrap:wrap; }
+  nav.main-nav a{
+    font-family:'Space Grotesk',sans-serif; font-size:0.82rem; letter-spacing:0.04em;
+    text-transform:uppercase; color:var(--ink-soft); padding:0.3rem 0; border-bottom:1px solid transparent;
+  }
+  nav.main-nav a:hover, nav.main-nav a.active{ color:var(--ink); border-bottom-color:var(--accent); }
+  .header-right{ display:flex; align-items:center; gap:1.4rem; }
+  .lang-toggle{ display:flex; align-items:center; gap:0.4rem; font-family:'Space Grotesk',sans-serif; font-size:0.78rem; letter-spacing:0.05em; }
+  .lang-toggle a{ color:var(--ink-soft); padding:0.15rem 0.2rem; }
+  .lang-toggle a.active{ color:var(--ink); font-weight:500; border-bottom:1px solid var(--accent); }
+  .lang-toggle span{ color:var(--line); }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:0.5rem;
+    font-family:'Space Grotesk',sans-serif; font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase;
+    padding:0.85rem 1.5rem; border:1px solid var(--ink); border-radius:var(--radius);
+    color:var(--ink); transition:background .15s ease, color .15s ease;
+  }
+  .btn:hover{ background:var(--ink); color:var(--bg); }
+  .btn-text{
+    font-family:'Space Grotesk',sans-serif; font-size:0.85rem; letter-spacing:0.03em; text-transform:uppercase;
+    color:var(--accent); border-bottom:1px solid var(--accent); padding-bottom:0.2rem;
+    display:inline-flex; align-items:center; gap:0.4rem;
+  }
+
+  /* ---------- Photo placeholders ---------- */
+  .photo{
+    position:relative; border:1px solid var(--line); border-radius:var(--radius);
+    background:linear-gradient(135deg,var(--bg-alt),var(--accent-soft));
+    overflow:hidden; display:flex; align-items:flex-end;
+  }
+  .photo-tag{
+    font-family:'Space Grotesk',sans-serif; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink-soft); background:rgba(245,241,234,0.78); padding:0.45rem 0.7rem; margin:0.9rem;
+    border-radius:2px;
+  }
+  .reg-mark{ position:absolute; opacity:0.55; }
+  .reg-mark.tl{ top:0.9rem; left:0.9rem; }
+  .reg-mark.br{ bottom:0.9rem; right:0.9rem; }
+  .photo--hero{ aspect-ratio:16/10; }
+  .photo--square{ aspect-ratio:1/1; }
+  .photo--wide{ aspect-ratio:21/9; }
+  .photo--4-3{ aspect-ratio:4/3; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding-top:clamp(3rem,8vw,5rem); }
+  .hero .wrap{ display:grid; gap:clamp(2rem,5vw,3.5rem); }
+  .hero-grid{ grid-template-columns:1.05fr 1fr; align-items:end; }
+  @media (max-width:760px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero h1{ font-size:clamp(2.3rem,5.4vw,3.85rem); margin:1rem 0 1.3rem; max-width:18ch; }
+
+  /* ---------- Intro ---------- */
+  .intro .wrap{ max-width:760px; }
+  .intro p.statement{ font-size:1.25rem; font-family:'Fraunces',serif; font-weight:400; line-height:1.5; color:var(--ink); margin-top:1.2rem; }
+
+  /* ---------- Service grid ---------- */
+  .service-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:clamp(2rem,4vw,2.6rem); margin-top:2.8rem; }
+  .service-card h3{ font-size:1.25rem; margin:1.1rem 0 0.5rem; }
+  .service-card p{ color:var(--ink-soft); font-size:0.98rem; }
+
+  /* ---------- Photo break ---------- */
+  .photo-break .wrap{ padding:0 var(--gutter); }
+
+  /* ---------- Testimonial ---------- */
+  .testimonial{ background:var(--bg-alt); }
+  .testimonial .wrap{ max-width:740px; text-align:center; }
+  .testimonial blockquote{ font-family:'Fraunces',serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:400; line-height:1.4; margin:0 0 1.4rem; }
+  .testimonial cite{ font-style:normal; font-family:'Space Grotesk',sans-serif; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(2.5rem,5vw,4rem); margin-top:2.8rem; }
+  .contact-info dl{ margin-top:1.6rem; }
+  .contact-info dt{ font-family:'Space Grotesk',sans-serif; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-top:1.3rem; }
+  .contact-info dd{ margin:0.2rem 0 0; font-size:1.05rem; }
+  .field{ margin-bottom:1.3rem; }
+  .field label{ display:block; font-family:'Space Grotesk',sans-serif; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:0.5rem; }
+  .field input, .field textarea{
+    width:100%; border:none; border-bottom:1px solid var(--line); background:transparent;
+    padding:0.6rem 0; font:inherit; color:var(--ink);
+  }
+  .field input:focus, .field textarea:focus{ outline:none; border-bottom-color:var(--accent); }
+  .form-note{ font-size:0.85rem; color:var(--ink-soft); margin-top:1.4rem; }
+  .form-success{ display:none; font-size:0.95rem; color:var(--slate); margin-top:1rem; }
+  .form-success.show{ display:block; }
+
+  /* ---------- Footer ---------- */
+  .site-footer{ border-top:1px solid var(--line); padding:3rem 0 2.4rem; }
+  .site-footer .wrap{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:2rem; }
+  .footer-nav{ display:flex; gap:1.6rem; flex-wrap:wrap; }
+  .footer-nav a{ font-family:'Space Grotesk',sans-serif; font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink-soft); }
+  .footer-nav a:hover{ color:var(--ink); }
+  .footer-social{ display:flex; gap:1.1rem; }
+  .footer-social a{ font-family:'Space Grotesk',sans-serif; font-size:0.78rem; color:var(--ink-soft); }
+  .footer-bottom{ margin-top:2.2rem; font-size:0.8rem; color:var(--ink-soft); }
+
+  @media (max-width:680px){
+    :root{ font-size:16px; }
+    .site-header .wrap{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body class="theme-ad">
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo">GAMA<small>CYPRUS</small></a>
+    <nav class="main-nav">
+      <a href="index.html" class="js-i" data-en="Home" data-tr="Ana Sayfa">Home</a>
+      <a href="furniture.html" class="js-i" data-en="Furniture" data-tr="Mobilya">Furniture</a>
+      <a href="advertisement.html" class="active js-i" data-en="Advertising" data-tr="Reklam">Advertising</a>
+      <a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-toggle">
+        <a href="advertisement.html?lang=en" data-lang="en">EN</a><span>/</span><a href="advertisement.html?lang=tr" data-lang="tr">TR</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow"><svg class="mark" viewBox="0 0 14 14"><path d="M7 0v4M7 10v4M0 7h4M10 7h4"/></svg>02 — <span data-en="Advertising" data-tr="Reklam">Advertising</span></p>
+        <h1 data-en="Brands, Built to Stand Out" data-tr="Öne Çıkan Markalar">Brands, Built to Stand Out</h1>
+        <p class="lede" data-en="Exhibition stands, signage and retail displays that get a brand noticed — designed, produced and installed in-house." data-tr="Markayı fark ettiren fuar standları, tabelalar ve mağaza sergileme üniteleri — tasarımdan kuruluma kendi bünyemizde.">Exhibition stands, signage and retail displays that get a brand noticed — designed, produced and installed in-house.</p>
+      </div>
+      <div class="photo photo--hero">
+        <span class="photo-tag" data-en="Photo — Advertising hero" data-tr="Fotoğraf — Reklam">Photo — Advertising hero</span>
+        <svg class="reg-mark tl mark" viewBox="0 0 14 14"><path d="M7 0v4M7 10v4M0 7h4M10 7h4"/></svg>
+        <svg class="reg-mark br mark" viewBox="0 0 14 14"><path d="M7 0v4M7 10v4M0 7h4M10 7h4"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro hairline">
+    <div class="wrap">
+      <p class="eyebrow" data-en="What We Build" data-tr="Ne Üretiyoruz">What We Build</p>
+      <p class="statement" data-en="From a single shop display to a full exhibition stand, we design for attention — then build it to last." data-tr="Tek bir mağaza sergileme ünitesinden komple bir fuar standına kadar; dikkat çekecek şekilde tasarlar, dayanıklı şekilde üretiriz.">From a single shop display to a full exhibition stand, we design for attention — then build it to last.</p>
+    </div>
+  </section>
+
+  <section class="services hairline">
+    <div class="wrap">
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="photo photo--4-3">
+            <span class="photo-tag" data-en="Photo — Exhibition" data-tr="Fotoğraf — Fuar">Photo — Exhibition</span>
+          </div>
+          <h3 data-en="Exhibition Stands" data-tr="Fuar Standları">Exhibition Stands</h3>
+          <p data-en="Custom stands for trade shows and events." data-tr="Fuar ve etkinlikler için özel tasarım standlar.">Custom stands for trade shows and events.</p>
+        </div>
+        <div class="service-card">
+          <div class="photo photo--4-3">
+            <span class="photo-tag" data-en="Photo — Retail" data-tr="Fotoğraf — Mağaza">Photo — Retail</span>
+          </div>
+          <h3 data-en="Retail &amp; POS Displays" data-tr="Mağaza ve Satış Noktası Üniteleri">Retail &amp; POS Displays</h3>
+          <p data-en="Display units that sell, in-store." data-tr="Mağaza içinde satışı destekleyen sergileme üniteleri.">Display units that sell, in-store.</p>
+        </div>
+        <div class="service-card">
+          <div class="photo photo--4-3">
+            <span class="photo-tag" data-en="Photo — Signage" data-tr="Fotoğraf — Tabela">Photo — Signage</span>
+          </div>
+          <h3 data-en="Signage &amp; Branding" data-tr="Tabela ve Marka Uygulamaları">Signage &amp; Branding</h3>
+          <p data-en="Storefront signs and brand environments." data-tr="Mağaza tabelaları ve marka ortamları.">Storefront signs and brand environments.</p>
+        </div>
+        <div class="service-card">
+          <div class="photo photo--4-3">
+            <span class="photo-tag" data-en="Photo — Print" data-tr="Fotoğraf — Baskı">Photo — Print</span>
+          </div>
+          <h3 data-en="Banners &amp; Large-Format" data-tr="Branda ve Büyük Format Baskı">Banners &amp; Large-Format</h3>
+          <p data-en="Banners and large-format prints, made to install." data-tr="Kuruluma hazır branda ve büyük format baskılar.">Banners and large-format prints, made to install.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="photo-break hairline">
+    <div class="wrap">
+      <div class="photo photo--wide">
+        <span class="photo-tag" data-en="Photo — Installation" data-tr="Fotoğraf — Kurulum">Photo — Installation</span>
+        <svg class="reg-mark tl mark" viewBox="0 0 14 14"><path d="M7 0v4M7 10v4M0 7h4M10 7h4"/></svg>
+        <svg class="reg-mark br mark" viewBox="0 0 14 14"><path d="M7 0v4M7 10v4M0 7h4M10 7h4"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro hairline">
+    <div class="wrap">
+      <p class="eyebrow" data-en="Why It Matters" data-tr="Neden Önemli">Why It Matters</p>
+      <p class="statement" data-en="A display only works if people actually stop. We design every stand and sign around that one moment of attention." data-tr="Bir sergileme ünitesi, insanlar gerçekten durduğunda işe yarar. Her stand ve tabelayı bu dikkat anına göre tasarlıyoruz.">A display only works if people actually stop. We design every stand and sign around that one moment of attention.</p>
+    </div>
+  </section>
+
+  <section class="testimonial">
+    <div class="wrap">
+      <blockquote data-en="“Our stand was the one people actually stopped at.”" data-tr="“İnsanların gerçekten önünde durduğu stand bizimkiydi.”">“Our stand was the one people actually stopped at.”</blockquote>
+      <cite>Placeholder Client — <span data-en="Exhibition Partner" data-tr="Fuar Ortağı">Exhibition Partner</span></cite>
+    </div>
+  </section>
+
+  <section class="contact hairline" id="contact">
+    <div class="wrap">
+      <p class="eyebrow" data-en="Get in Touch" data-tr="Bize Ulaşın">Get in Touch</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="lede" style="max-width:30ch;" data-en="Tell us about your advertising project." data-tr="Reklam projenizden bahsedin.">Tell us about your advertising project.</p>
+          <dl>
+            <dt data-en="Email" data-tr="E-posta">Email</dt>
+            <dd>hello@gamacyprus.com</dd>
+            <dt data-en="Phone" data-tr="Telefon">Phone</dt>
+            <dd>+357 00 000 0000</dd>
+            <dt data-en="Address" data-tr="Adres">Address</dt>
+            <dd data-en="[Street Address], Nicosia, Cyprus" data-tr="[Sokak Adresi], Lefkoşa, Kıbrıs">[Street Address], Nicosia, Cyprus</dd>
+          </dl>
+        </div>
+        <div>
+          <form id="contact-form">
+            <div class="field">
+              <label for="name" data-en="Name" data-tr="İsim">Name</label>
+              <input id="name" type="text" required>
+            </div>
+            <div class="field">
+              <label for="email" data-en="Email" data-tr="E-posta">Email</label>
+              <input id="email" type="email" required>
+            </div>
+            <div class="field">
+              <label for="message" data-en="Message" data-tr="Mesaj">Message</label>
+              <textarea id="message" rows="4" required></textarea>
+            </div>
+            <button class="btn" type="submit" data-en="Send" data-tr="Gönder">Send</button>
+            <p class="form-success" data-en="Thanks — we'll be in touch." data-tr="Teşekkürler — sizinle iletişime geçeceğiz.">Thanks — we'll be in touch.</p>
+          </form>
+          <p class="form-note" data-en="This form is a placeholder and is not yet connected to email." data-tr="Bu form bir yer tutucudur ve henüz e-postaya bağlanmamıştır.">This form is a placeholder and is not yet connected to email.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav class="footer-nav">
+      <a href="index.html" class="js-i" data-en="Home" data-tr="Ana Sayfa">Home</a>
+      <a href="furniture.html" class="js-i" data-en="Furniture" data-tr="Mobilya">Furniture</a>
+      <a href="advertisement.html" class="js-i" data-en="Advertising" data-tr="Reklam">Advertising</a>
+      <a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a>
+    </nav>
+    <div class="footer-social">
+      <a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">© 2026 Gama Cyprus</div>
+</footer>
+
+<script>
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang') === 'tr' ? 'tr' : 'en';
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    var text = el.getAttribute(lang === 'tr' ? 'data-tr' : 'data-en');
+    if(text !== null) el.textContent = text;
+  });
+  document.querySelectorAll('a.js-i').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(href && href.indexOf('.html') !== -1){
+      var base = href.split('?')[0];
+      a.setAttribute('href', base + '?lang=' + lang);
+    }
+  });
+  document.querySelectorAll('.lang-toggle a').forEach(function(a){
+    if(a.dataset.lang === lang) a.classList.add('active'); else a.classList.remove('active');
+  });
+  var form = document.getElementById('contact-form');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var note = form.querySelector('.form-success');
+      if(note) note.classList.add('show');
+      form.reset();
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
