@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GAMA Studio — Residential Interior Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ───── NAV ───── -->
+  <header class="nav" id="siteNav">
+    <div class="nav__side">
+      <a href="about.html" class="nav__link">About Us</a>
+      <a href="services.html" class="nav__link">Services</a>
+    </div>
+    <span class="nav__logo">GAMA STUDIO</span>
+    <div class="nav__side nav__side--right">
+      <a href="projects.html" class="nav__link">Projects</a>
+      <a href="contact.html" class="nav__link">Contact Us</a>
+    </div>
+    <button class="nav__burger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- ───── HERO — 5 rotating images ───── -->
+  <section class="hero">
+    <div class="hero__slide ph-1 active" data-label="Image 1"></div>
+    <div class="hero__slide ph-2" data-label="Image 2"></div>
+    <div class="hero__slide ph-3" data-label="Image 3"></div>
+    <div class="hero__slide ph-4" data-label="Image 4"></div>
+    <div class="hero__slide ph-5" data-label="Image 5"></div>
+    <div class="hero__veil"></div>
+
+    <div class="hero__scroll">
+      <div class="hero__scroll-icon">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 3L6 8L11 3" stroke="#C7B299" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ───── TEXT 1 ───── -->
+  <section class="intro-block reveal-target">
+    <h2>Tailored interiors defined by craftsmanship, detail and thoughtful design.</h2>
+    <p class="body-copy">GAMA Studio is a boutique residential interior studio specialising in bespoke joinery, procurement and full fit-out coordination.</p>
+    <p class="body-copy">Backed by decades of experience across London, Turkey and Cyprus, the studio brings together international project exposure, craftsmanship and design-led execution.</p>
+    <p class="body-copy">With experience spanning high-end residential projects in London and production capabilities across Turkey and Cyprus, the studio offers a tailored and integrated approach to residential interiors throughout the UAE.</p>
+    <a href="about.html" class="more-link">More →</a>
+  </section>
+
+  <!-- Images 6, 7, 8 -->
+  <div class="image-row reveal-target">
+    <div class="img-ph ph-6" data-img="Image 6"></div>
+    <div class="img-ph ph-7" data-img="Image 7"></div>
+    <div class="img-ph ph-8" data-img="Image 8"></div>
+  </div>
+
+  <!-- ───── TEXT 2 ───── -->
+  <section class="intro-block reveal-target">
+    <h2>An integrated approach to residential interiors.</h2>
+    <p class="body-copy">GAMA Studio offers a tailored approach to residential interiors, combining thoughtful design, bespoke craftsmanship and seamless project delivery. From concept development and custom joinery to procurement, project management and full fit-out coordination, we provide integrated solutions designed around the unique requirements of each home. Our approach balances aesthetics, functionality and attention to detail, creating refined living environments that are both timeless and personal.</p>
+    <a href="services.html" class="more-link">More →</a>
+  </section>
+
+  <!-- ───── SERVICE CARDS — Images 9–14 ───── -->
+  <div class="service-grid reveal-target">
+    <div class="service-card">
+      <div class="service-card__img img-ph ph-1" data-img="Image 9"></div>
+      <div class="service-card__body">
+        <h4>Interior Design</h4>
+        <p>Tailored residential interiors balancing aesthetics, functionality and craftsmanship.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card__img img-ph ph-2" data-img="Image 10"></div>
+      <div class="service-card__body">
+        <h4>Bespoke Joinery Design &amp; Production</h4>
+        <p>Custom kitchens, wardrobes, panelling and furniture made through our own production network.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card__img img-ph ph-3" data-img="Image 11"></div>
+      <div class="service-card__body">
+        <h4>Procurement &amp; Sourcing</h4>
+        <p>Furniture, lighting and materials curated from trusted international suppliers.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card__img img-ph ph-4" data-img="Image 12"></div>
+      <div class="service-card__body">
+        <h4>Renovation &amp; Interior Upgrade</h4>
+        <p>Considered design interventions that enhance and elevate existing homes.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card__img img-ph ph-5" data-img="Image 13"></div>
+      <div class="service-card__body">
+        <h4>Project Management</h4>
+        <p>Seamless coordination of contractors, suppliers and installations from start to finish.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-card__img img-ph ph-6" data-img="Image 14"></div>
+      <div class="service-card__body">
+        <h4>Turnkey, Furnishing &amp; Full Fit-out</h4>
+        <p>A complete, ready-to-live-in home — design, production and installation as one service.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───── CONTACT BLOCK ───── -->
+  <section class="contact-block reveal-target" id="contact">
+    <div class="contact-block__inner">
+      <div>
+        <p class="eyebrow">Get In Touch</p>
+        <h2>Tell us about your new home!</h2>
+        <p class="body-copy">We work with a select number of residential clients each year across London, Turkey, Cyprus and the UAE.</p>
+
+        <div class="contact-details">
+          <div class="contact-details__group">
+            <p class="eyebrow">Contact Number</p>
+            <a href="tel:+971562647308">+971 56 264 7308</a>
+          </div>
+          <div class="contact-details__group">
+            <p class="eyebrow">New Projects</p>
+            <a href="mailto:hello@gama-london.com">hello@gama-london.com</a>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com" />
+        </div>
+        <div class="field">
+          <label for="message">Tell us about your project</label>
+          <textarea id="message" name="message" rows="4" placeholder="Location, scope, timeline…"></textarea>
+        </div>
+        <button type="submit" class="btn btn--dark btn--full">Send Enquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ───── FOOTER ───── -->
+  <footer class="footer">
+    <div class="footer__top">
+      <span class="footer__logo">GAMA Studio</span>
+      <div class="footer__nav">
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 GAMA Studio. All rights reserved.</p>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <div class="success-overlay" id="successOverlay">
+    <div class="success-box">
+      <p class="eyebrow">Received</p>
+      <h3>Thank you.</h3>
+      <p>We will be in touch within two working days.</p>
+      <button onclick="closeSuccess()" class="btn btn--dark">Close</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

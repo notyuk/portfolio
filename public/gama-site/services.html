@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — GAMA Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ───── NAV ───── -->
+  <header class="nav" id="siteNav">
+    <div class="nav__side">
+      <a href="about.html" class="nav__link">About Us</a>
+      <a href="services.html" class="nav__link active">Services</a>
+    </div>
+    <span class="nav__logo">GAMA STUDIO</span>
+    <div class="nav__side nav__side--right">
+      <a href="projects.html" class="nav__link">Projects</a>
+      <a href="contact.html" class="nav__link">Contact Us</a>
+    </div>
+    <button class="nav__burger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+
+  <!-- ───── PAGE HEADER ───── -->
+  <section class="page-hero reveal-target">
+    <p class="eyebrow">What We Do</p>
+    <h1>Services</h1>
+  </section>
+
+  <!-- ───── CATEGORY LIST ───── -->
+  <div class="service-categories reveal-target">
+    <span>Interior Design</span>
+    <span>Bespoke Joinery Design &amp; Production</span>
+    <span>Procurement &amp; Sourcing</span>
+    <span>Renovation &amp; Interior Upgrade</span>
+    <span>Project Management</span>
+    <span>Turnkey &amp; Full Fit-Out</span>
+  </div>
+
+  <!-- ───── SERVICE ROW 1 — Image 18 / Text 12 ───── -->
+  <div class="service-row reveal-target">
+    <div class="service-row__img img-ph ph-1" data-img="Image 18"></div>
+    <div class="service-row__body">
+      <span class="service-row__num">01</span>
+      <h3>Interior Design</h3>
+      <p>We create tailored residential interiors that balance aesthetics, functionality and craftsmanship. From concept development and spatial planning to material selection and detailing, every design is carefully considered to reflect the way our clients live.</p>
+    </div>
+  </div>
+
+  <!-- ───── SERVICE ROW 2 — Image 19 / Text 13 ───── -->
+  <div class="service-row reveal-target">
+    <div class="service-row__img img-ph ph-2" data-img="Image 19"></div>
+    <div class="service-row__body">
+      <span class="service-row__num">02</span>
+      <h3>Bespoke Joinery Design &amp; Production</h3>
+      <p>Bespoke joinery is at the core of what we do. Supported by dedicated production facilities and trusted manufacturing partners in Turkey and Cyprus, we design and produce custom kitchens, wardrobes, wall panelling, media units and furniture tailored to each project. This integrated approach allows us to maintain exceptional quality, craftsmanship and attention to detail throughout the process.</p>
+    </div>
+  </div>
+
+  <!-- ───── SERVICE ROW 3 — Image 20 / Text 14 ───── -->
+  <div class="service-row reveal-target">
+    <div class="service-row__img img-ph ph-3" data-img="Image 20"></div>
+    <div class="service-row__body">
+      <span class="service-row__num">03</span>
+      <h3>Procurement &amp; Sourcing</h3>
+      <p>We source furniture, lighting, materials and decorative pieces from trusted international suppliers, ensuring every element of the home is carefully curated, coordinated and delivered to the highest standards.</p>
+    </div>
+  </div>
+
+  <!-- ───── SERVICE ROW 4 — Image 21 / Text 15 ───── -->
+  <div class="service-row reveal-target">
+    <div class="service-row__img img-ph ph-4" data-img="Image 21"></div>
+    <div class="service-row__body">
+      <span class="service-row__num">04</span>
+      <h3>Renovation &amp; Interior Upgrades</h3>
+      <p>Whether updating a single room or transforming an entire property, we help clients enhance existing homes through considered design interventions, improved layouts, upgraded finishes and bespoke detailing.</p>
+    </div>
+  </div>
+
+  <!-- ───── SERVICE ROW 5 — Image 22 / Text 16 ───── -->
+  <div class="service-row reveal-target">
+    <div class="service-row__img img-ph ph-5" data-img="Image 22"></div>
+    <div class="service-row__body">
+      <span class="service-row__num">05</span>
+      <h3>Project Management &amp; Coordination</h3>
+      <p>We oversee every stage of the project, coordinating contractors, suppliers and installations to ensure a seamless process, clear communication and exceptional execution from start to finish.</p>
+    </div>
+  </div>
+
+  <!-- ───── SERVICE ROW 6 — Image 23 / Text 17 ───── -->
+  <div class="service-row reveal-target" style="border-bottom: none;">
+    <div class="service-row__img img-ph ph-6" data-img="Image 23"></div>
+    <div class="service-row__body">
+      <span class="service-row__num">06</span>
+      <h3>Turnkey &amp; Full Fit-Out</h3>
+      <p>Our turnkey service provides a fully integrated approach to residential interiors, bringing together design, procurement, bespoke production, contractor coordination and final installation to deliver a complete, ready-to-live-in home.</p>
+    </div>
+  </div>
+
+  <!-- ───── FOOTER ───── -->
+  <footer class="footer">
+    <div class="footer__top">
+      <span class="footer__logo">GAMA Studio</span>
+      <div class="footer__nav">
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 GAMA Studio. All rights reserved.</p>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
