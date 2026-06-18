@@ -649,6 +649,13 @@ h4 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 400; }
   }
 
   .service-grid, .image-row, .about-image-row { grid-template-columns: 1fr; }
+  .image-row, .about-image-row {
+    height: auto;
+    gap: 10px;
+  }
+  .image-row > div, .about-image-row > div {
+    height: clamp(220px, 65vw, 340px);
+  }
   .contact-details { padding-top: 0; margin-top: var(--space-m); }
 }
 
