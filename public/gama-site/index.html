@@ -125,7 +125,7 @@
   <section class="contact-block reveal-target" id="contact">
     <div class="contact-block__inner">
       <div>
-        <h2>Tell us about your new home!</h2>
+        <p class="eyebrow">Get In Touch</p>
         <p class="body-copy">Whether you are furnishing a new residence, planning a renovation, or seeking a complete turnkey solution, our team would be delighted to discuss your project.</p>
 
         <div class="contact-details">
@@ -148,21 +148,24 @@
         </div>
       </div>
 
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required placeholder="Your name" />
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required placeholder="your@email.com" />
-        </div>
-        <div class="field">
-          <label for="message">Tell us about your project</label>
-          <textarea id="message" name="message" rows="4" placeholder="Location, scope, timeline…"></textarea>
-        </div>
-        <button type="submit" class="btn btn--dark btn--full">Send Enquiry</button>
-      </form>
+      <div>
+        <h2>Tell us about your new home!</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+          </div>
+          <div class="field">
+            <label for="message">Tell us about your project</label>
+            <textarea id="message" name="message" rows="4" placeholder="Location, scope, timeline…"></textarea>
+          </div>
+          <button type="submit" class="btn btn--dark btn--full">Send Enquiry</button>
+        </form>
+      </div>
     </div>
   </section>
 
