@@ -459,6 +459,7 @@ h4 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 400; }
 .services-intro__list {
   font-family: var(--display);
   font-style: italic;
+  font-weight: 700;
   font-size: clamp(0.8rem, 1.05vw, 1.1rem);
   color: var(--grey-text);
   max-width: 100%;
