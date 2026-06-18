@@ -447,7 +447,7 @@ h4 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 400; }
 
 /* ───────────────────────── SERVICES PAGE ───────────────────────── */
 .services-intro {
-  padding: calc(var(--nav-h) + var(--space-l)) clamp(2rem, 6vw, 6rem) var(--space-l);
+  padding: calc(var(--nav-h) + var(--space-l)) clamp(2rem, 6vw, 6rem) var(--space-xs);
   text-align: center;
   background: var(--white);
 }
@@ -459,11 +459,17 @@ h4 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 400; }
 .services-intro__list {
   font-family: var(--display);
   font-style: italic;
-  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  font-size: clamp(0.8rem, 1.05vw, 1.1rem);
   color: var(--grey-text);
-  max-width: 760px;
+  max-width: 100%;
   margin: 0 auto;
   line-height: 1.9;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .services-intro__list {
+    white-space: normal;
+  }
 }
 
 .service-row {
