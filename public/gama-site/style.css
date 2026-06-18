@@ -430,52 +430,11 @@ h4 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 400; }
 
 .map-block {
   margin: 0 clamp(2rem, 6vw, 6rem) var(--space-l);
-  position: relative;
 }
 .map-block__img {
   width: 100%;
   height: auto;
   display: block;
-}
-.map-pin {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  max-width: 180px;
-  background: rgba(253, 251, 247, 0.88);
-  padding: 0.5rem 0.7rem;
-  border-radius: 2px;
-}
-.map-pin::before {
-  content: '';
-  width: 18px;
-  height: 1px;
-  background: var(--beige);
-  margin-bottom: 0.2rem;
-}
-.map-pin__label {
-  font-family: var(--body);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  font-weight: 500;
-  color: var(--black);
-}
-.map-pin__desc {
-  font-family: var(--body);
-  font-size: 0.7rem;
-  line-height: 1.5;
-  color: var(--grey-text);
-}
-.map-pin--london { left: 22%; top: 28%; }
-.map-pin--turkey { left: 58%; top: 30%; }
-.map-pin--cyprus { left: 50%; top: 48%; }
-.map-pin--uae     { left: 58%; top: 62%; }
-
-@media (max-width: 700px) {
-  .map-pin { max-width: 130px; padding: 0.4rem 0.55rem; }
-  .map-pin__label { font-size: 0.6rem; }
-  .map-pin__desc { font-size: 0.62rem; line-height: 1.35; }
 }
 
 .about-image-row {
