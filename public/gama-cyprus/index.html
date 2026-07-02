@@ -300,6 +300,17 @@
   .brand-item + .brand-item{ border-left:1px solid var(--line); }
   @keyframes ticker{ 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
 
+
+  /* WhatsApp float */
+  .wa-float{
+    position:fixed; bottom:1.8rem; right:1.8rem; z-index:50;
+    width:54px; height:54px; border-radius:50%;
+    background:#25D366; box-shadow:0 4px 16px rgba(0,0,0,0.2);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .wa-float:hover{ transform:scale(1.08); box-shadow:0 6px 20px rgba(0,0,0,0.25); }
+
 </style>
 </head>
 <body class="theme-home">
@@ -352,7 +363,6 @@
           loading="eager">
         <div class="split-panel__overlay"></div>
         <div class="split-panel__content">
-          </span>
           <h2 data-en="Furniture" data-tr="Mobilya">Mobilya</h2>
           <p data-en="Bespoke pieces for homes, offices and hospitality spaces." data-tr="Ev, ofis ve konaklama mekânları için özel tasarım mobilyalar.">Ev, ofis ve konaklama mekânları için özel tasarım mobilyalar.</p>
           <span class="split-panel__arrow" data-en="Explore →" data-tr="Keşfedin →">Keşfedin →</span>
@@ -366,7 +376,6 @@
           loading="eager">
         <div class="split-panel__overlay"></div>
         <div class="split-panel__content">
-          </span>
           <h2 data-en="Advertising" data-tr="Reklam">Reklam</h2>
           <p data-en="Stands, signage and displays that put brands in front of people." data-tr="Markaları öne çıkaran standlar, tabelalar ve sergi sistemleri.">Markaları öne çıkaran standlar, tabelalar ve sergi sistemleri.</p>
           <span class="split-panel__arrow" data-en="Explore →" data-tr="Keşfedin →">Keşfedin →</span>
@@ -380,7 +389,7 @@
   <section class="vision hairline">
     <div class="wrap">
       <p class="eyebrow" data-en="Our Studio" data-tr="Stüdyomuz">Our Studio</p>
-      <p data-en="Gama Cyprus brings furniture-making and advertising production together under one roof — the same craft and care applied to how people live and how brands are seen." data-tr="Gama Kıbrıs, mobilya üretimini ve reklam üretimini tek çatı altında birleştirir — aynı zanaat ve özen; hem yaşam alanlarında hem markalarda.">Gama Cyprus brings furniture-making and advertising production together under one roof — the same craft and care applied to how people live and how brands are seen.</p>
+      <p data-en="Based in Nicosia, Gama Cyprus has been designing and building bespoke furniture and advertising displays since 1999. Every project — whether a hotel lobby, a retail stand, or a family kitchen — starts with a visit, a conversation, and a blank page." data-tr="Lefkoşa merkezli Gama Kıbrıs, 1999'dan bu yana özel tasarım mobilya ve reklam sistemleri tasarlayıp üretiyor. Her proje — ister bir otel lobisi, ister bir perakende standı, ister bir aile mutfağı olsun — bir ziyaretle, bir sohbetle ve boş bir sayfayla başlar.">Lefkoşa merkezli Gama Kıbrıs, 1999'dan bu yana özel tasarım mobilya ve reklam sistemleri tasarlayıp üretiyor. Her proje — ister bir otel lobisi, ister bir perakende standı, ister bir aile mutfağı olsun — bir ziyaretle, bir sohbetle ve boş bir sayfayla başlar.</p>
     </div>
   </section>
 
@@ -391,22 +400,22 @@
         <div class="step">
           <p class="tag"><svg class="mark" viewBox="0 0 14 14"><path d="M7 0v4M7 10v4M0 7h4M10 7h4"/></svg>01</p>
           <h3 data-en="Consultation" data-tr="Danışmanlık">Consultation</h3>
-          <p data-en="We visit, listen, and scope the project." data-tr="Mekânı ziyaret eder, ihtiyaçları dinler ve kapsamı belirleriz.">We visit, listen, and scope the project.</p>
+          <p data-en="We visit your space, listen carefully, and scope the project together." data-tr="Mekânınızı ziyaret eder, sizi dikkatlice dinler ve projeyi birlikte şekillendiririz.">Mekânınızı ziyaret eder, sizi dikkatlice dinler ve projeyi birlikte şekillendiririz.</p>
         </div>
         <div class="step">
           <p class="tag"><svg class="mark" viewBox="0 0 14 14"><path d="M7 0v4M7 10v4M0 7h4M10 7h4"/></svg>02</p>
           <h3 data-en="Design" data-tr="Tasarım">Design</h3>
-          <p data-en="Concepts and drawings tailored to your space or brand." data-tr="Mekânınıza veya markanıza özel konsept ve çizimler hazırlarız.">Concepts and drawings tailored to your space or brand.</p>
+          <p data-en="Technical drawings and material selections, revised until it's right." data-tr="Onaylanana kadar revize edilen teknik çizimler ve malzeme seçimleri.">Onaylanana kadar revize edilen teknik çizimler ve malzeme seçimleri.</p>
         </div>
         <div class="step">
           <p class="tag"><svg class="mark" viewBox="0 0 14 14"><path d="M7 0v4M7 10v4M0 7h4M10 7h4"/></svg>03</p>
           <h3 data-en="Production" data-tr="Üretim">Production</h3>
-          <p data-en="Built in our workshop, to spec." data-tr="Atölyemizde, ölçülere uygun üretilir.">Built in our workshop, to spec.</p>
+          <p data-en="Built by hand in our Nicosia workshop, to the millimetre." data-tr="Lefkoşa atölyemizde, milimetresine kadar elle üretilir.">Lefkoşa atölyemizde, milimetresine kadar elle üretilir.</p>
         </div>
         <div class="step">
           <p class="tag"><svg class="mark" viewBox="0 0 14 14"><path d="M7 0v4M7 10v4M0 7h4M10 7h4"/></svg>04</p>
           <h3 data-en="Install" data-tr="Kurulum">Install</h3>
-          <p data-en="Delivered and fitted with care." data-tr="Dikkatle teslim edilir ve kurulur.">Delivered and fitted with care.</p>
+          <p data-en="Delivered, installed, and finished — we don't leave until it's done right." data-tr="Teslim edilir, kurulur ve tamamlanır — doğru yapılmadan ayrılmayız.">Teslim edilir, kurulur ve tamamlanır — doğru yapılmadan ayrılmayız.</p>
         </div>
       </div>
     </div>
@@ -454,9 +463,9 @@
           <p class="lede" style="max-width:30ch;" data-en="Tell us about your project — furniture, advertising, or both." data-tr="Projenizden bahsedin — mobilya, reklam ya da ikisi birden.">Tell us about your project — furniture, advertising, or both.</p>
           <dl>
             <dt data-en="Email" data-tr="E-posta">Email</dt>
-            <dd>hello@gamacyprus.com</dd>
+            <dd><a href="mailto:hello@gamacyprus.com" style="color:inherit;">hello@gamacyprus.com</a></dd>
             <dt data-en="Phone" data-tr="Telefon">Phone</dt>
-            <dd>+90 392 225 45 06</dd>
+            <dd><a href="tel:+903922254506" style="color:inherit;">+90 392 225 45 06</a></dd>
             <dt data-en="Address" data-tr="Adres">Address</dt>
             <dd data-en="Organize Sanayi Bölgesi 7. Sokak No: 9, Lefkoşa / KKTC" data-tr="Organize Sanayi Bölgesi 7. Sokak No: 9, Lefkoşa / KKTC">Organize Sanayi Bölgesi 7. Sokak No: 9, Lefkoşa / KKTC</dd>
           </dl>
@@ -538,6 +547,13 @@
   }
 })();
 </script>
+
+
+<a href="https://wa.me/903922254506" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="#fff">
+    <path d="M16 3C9 3 3 9 3 16c0 2.3.6 4.5 1.8 6.4L3 29l6.8-1.8A13 13 0 0 0 16 29c7 0 13-6 13-13S23 3 16 3zm0 23.8a11 11 0 0 1-5.6-1.5l-.4-.2-4 1 1-3.9-.3-.4A11 11 0 1 1 16 26.8zm6-8.2c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-1 1.2c-.2.2-.4.2-.7 0-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.4z"/>
+  </svg>
+</a>
 
 </body>
 </html>
