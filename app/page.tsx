@@ -81,6 +81,7 @@ export default async function HomePage({
 
         <Signal />
         <Frames photos={photos} />
+        <Guestbook modkey={modkey} />
 
         <div className={styles.links}>
           <div className={styles.nav}>
@@ -96,8 +97,6 @@ export default async function HomePage({
           </div>
         </div>
       </div>
-
-      <Guestbook modkey={modkey} />
     </main>
   );
 }

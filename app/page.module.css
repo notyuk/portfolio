@@ -302,42 +302,49 @@
 }
 .links .end em { font-style: normal; color: var(--ink); }
 
-/* ─── guestbook ─── */
+/* ─── guestbook (compact widget, fits inside the poster viewport) ─── */
 .guestbook {
-  border-top: 1px solid var(--ink);
-}
-.guestbookInner {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 48px 24px 80px;
+  position: absolute;
+  top: 150px;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 .guestbook h2 {
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 10px;
   letter-spacing: 2.5px;
+  color: var(--mute-1);
   text-transform: uppercase;
   margin: 0 0 8px;
+  font-weight: 400;
+  flex-shrink: 0;
 }
 .guestbookSub {
   color: var(--mute-1);
-  font-size: 12px;
-  margin: 0 0 24px;
+  font-size: 11px;
+  margin: 0 0 8px;
+  flex-shrink: 0;
 }
 
 .guestbookForm {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 40px;
+  gap: 6px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 .guestbookForm input,
 .guestbookForm textarea {
   font-family: inherit;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--ink);
-  background: transparent;
+  background: var(--paper);
   border: 1px solid var(--mute-2);
-  padding: 8px 10px;
+  padding: 6px 8px;
   resize: vertical;
 }
 .guestbookForm input::placeholder,
@@ -372,11 +379,21 @@
   color: var(--paper);
 }
 
-.guestbookEntries { list-style: none; margin: 0; padding: 0; }
+.guestbookEntries {
+  list-style: none;
+  margin: 0;
+  padding: 8px 10px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  background: rgba(236, 231, 217, 0.75);
+  border: 1px solid var(--mute-2);
+}
 .guestbookEntries li {
-  padding: 12px 0;
+  padding: 8px 0;
   border-bottom: 1px dotted var(--mute-2);
 }
+.guestbookEntries li:last-child { border-bottom: none; }
 .guestbookEntryHead {
   display: flex;
   justify-content: space-between;
@@ -384,26 +401,26 @@
   gap: 12px;
 }
 .guestbookName {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
 }
 .guestbookDate {
   color: var(--mute-2);
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: .5px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 .guestbookComment {
-  margin: 4px 0 0;
-  font-size: 13px;
-  line-height: 1.6;
+  margin: 3px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
   white-space: pre-wrap;
   word-break: break-word;
 }
 .guestbookEmpty {
   color: var(--mute-1);
-  padding: 12px 0;
+  padding: 4px 0;
   border-bottom: none;
 }
 .guestbookDelete { margin-top: 6px; }
@@ -429,5 +446,15 @@
   .mnSigArt { margin-left: 0; }
   .frames { position: static; padding: 26px 22px 0; max-width: none; text-align: left; }
   .framesFrame { margin-left: 0; }
+  .guestbook {
+    position: static;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: auto;
+    padding: 26px 22px 0;
+  }
+  .guestbookEntries { max-height: 220px; }
   .links { bottom: 20px; }
 }
