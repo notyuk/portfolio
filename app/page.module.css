@@ -5,14 +5,11 @@
   --mute-1: #6a635a;
   --mute-2: #8a8378;
 
-  position: relative;
-  min-height: 100vh;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-geist-mono), 'SF Mono', Consolas, Menlo, monospace;
   font-size: 12px;
   line-height: 1.55;
-  overflow: hidden;
 }
 .root a {
   color: var(--ink);
@@ -23,6 +20,13 @@
   background: var(--ink);
   color: var(--paper);
   border-bottom-color: var(--ink);
+}
+
+/* ─── poster (the single-viewport homepage "front page") ─── */
+.poster {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .sr {
@@ -298,8 +302,126 @@
 }
 .links .end em { font-style: normal; color: var(--ink); }
 
+/* ─── guestbook ─── */
+.guestbook {
+  border-top: 1px solid var(--ink);
+}
+.guestbookInner {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+.guestbook h2 {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+.guestbookSub {
+  color: var(--mute-1);
+  font-size: 12px;
+  margin: 0 0 24px;
+}
+
+.guestbookForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+.guestbookForm input,
+.guestbookForm textarea {
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--mute-2);
+  padding: 8px 10px;
+  resize: vertical;
+}
+.guestbookForm input::placeholder,
+.guestbookForm textarea::placeholder { color: var(--mute-2); }
+.guestbookForm input:focus,
+.guestbookForm textarea:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.guestbookForm button {
+  align-self: flex-start;
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--ink);
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.guestbookForm button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.guestbookEntries { list-style: none; margin: 0; padding: 0; }
+.guestbookEntries li {
+  padding: 12px 0;
+  border-bottom: 1px dotted var(--mute-2);
+}
+.guestbookEntryHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.guestbookName {
+  font-size: 12px;
+  font-weight: 500;
+}
+.guestbookDate {
+  color: var(--mute-2);
+  font-size: 10px;
+  letter-spacing: .5px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.guestbookComment {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.guestbookEmpty {
+  color: var(--mute-1);
+  padding: 12px 0;
+  border-bottom: none;
+}
+.guestbookDelete { margin-top: 6px; }
+.guestbookDelete button {
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--mute-1);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.guestbookDelete button:hover { color: var(--ink); }
+
 @media (max-width: 640px) {
-  .root { min-height: 0; padding-bottom: 260px; }
+  .poster { min-height: 0; padding-bottom: 260px; }
   .art { top: auto; bottom: 0; height: 260px; }
   .id { position: static; padding: 70px 22px 0; max-width: none; }
   .write { position: static; padding: 26px 22px 0; max-width: none; }

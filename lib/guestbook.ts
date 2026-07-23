@@ -28,3 +28,22 @@ export async function addGuestbookEntry(name: string, comment: string): Promise<
   await redis.lpush(GUESTBOOK_KEY, entry);
   await redis.ltrim(GUESTBOOK_KEY, 0, MAX_ENTRIES - 1);
 }
+
+export async function deleteGuestbookEntry(id: string): Promise<void> {
+  if (!redis) return;
+
+  const entries = await getGuestbookEntries();
+  const remaining = entries.filter((entry) => entry.id !== id);
+
+  await redis.del(GUESTBOOK_KEY);
+  if (remaining.length > 0) {
+    await redis.rpush(GUESTBOOK_KEY, ...remaining);
+  }
+}
+
+const LINK_PATTERN = /https?:\/\/|www\./gi;
+
+export function looksLikeSpam(comment: string): boolean {
+  const matches = comment.match(LINK_PATTERN);
+  return (matches?.length ?? 0) >= 2;
+}
