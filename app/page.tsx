@@ -98,7 +98,7 @@ export default async function HomePage({
             <a href="#guestbook">book</a>
           </div>
           <div className={styles.end}>
-            ◼ <em>hello</em> hi
+            ◼ <em>hi</em> people
           </div>
         </div>
       </div>
