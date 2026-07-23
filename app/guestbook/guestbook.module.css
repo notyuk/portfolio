@@ -1,0 +1,142 @@
+.root {
+  --paper: #ece7d9;
+  --ink: #0f0f0f;
+  --mute-1: #6a635a;
+  --mute-2: #8a8378;
+
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-mono), 'SF Mono', Consolas, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.root a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+}
+.root a:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom-color: var(--ink);
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+.head .home {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  color: var(--mute-1);
+}
+.head .home:hover { color: var(--ink); background: transparent; }
+.head h1 {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.sub {
+  color: var(--mute-1);
+  font-size: 12px;
+  margin: 0 0 28px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+.form input,
+.form textarea {
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--mute-2);
+  padding: 8px 10px;
+  resize: vertical;
+}
+.form input::placeholder,
+.form textarea::placeholder { color: var(--mute-2); }
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.form button {
+  align-self: flex-start;
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--ink);
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.form button:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.entries { list-style: none; margin: 0; padding: 0; }
+.entries li {
+  padding: 12px 0;
+  border-bottom: 1px dotted var(--mute-2);
+}
+.entryHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.name {
+  font-size: 12px;
+  font-weight: 500;
+}
+.date {
+  color: var(--mute-2);
+  font-size: 10px;
+  letter-spacing: .5px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.comment {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.empty {
+  color: var(--mute-1);
+  padding: 12px 0;
+  border-bottom: none;
+}

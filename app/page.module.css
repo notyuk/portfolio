@@ -1,0 +1,311 @@
+/* ─── palette + tokens (scoped to this module) ─── */
+.root {
+  --paper: #ece7d9;
+  --ink: #0f0f0f;
+  --mute-1: #6a635a;
+  --mute-2: #8a8378;
+
+  position: relative;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-mono), 'SF Mono', Consolas, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  overflow: hidden;
+}
+.root a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+}
+.root a:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom-color: var(--ink);
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ─── moonscape ─── */
+.art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── stars (top embellishment) ─── */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  display: block;
+  pointer-events: none;
+}
+
+.corner {
+  position: absolute;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--mute-2);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.cornerTl { top: 10px; left: 8px; }
+.cornerTr { top: 10px; right: 8px; }
+.cornerBl { bottom: 10px; left: 8px; }
+.cornerBr { bottom: 10px; right: 8px; }
+
+.tl,
+.tr {
+  position: absolute;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--mute-1);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.tl { top: 20px; left: 24px; }
+.tr { top: 20px; right: 24px; text-align: right; }
+.tr .p {
+  color: var(--mute-2);
+  letter-spacing: .5px;
+  text-transform: none;
+  font-size: 10px;
+  margin: 4px 0 0;
+}
+.tag {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2px 6px 3px;
+  letter-spacing: 1.5px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.id {
+  position: absolute;
+  top: 90px;
+  left: 26px;
+  max-width: 300px;
+}
+.id h1 {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--ink);
+  margin: 0 0 8px;
+  text-transform: lowercase;
+}
+.id p {
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.55;
+  max-width: 28ch;
+}
+.id p em { font-style: normal; color: var(--mute-1); }
+
+.write {
+  position: absolute;
+  top: 260px;
+  left: 26px;
+  max-width: 300px;
+}
+.write h2 {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: var(--mute-1);
+  text-transform: uppercase;
+  margin: 0 0 8px;
+  font-weight: 400;
+}
+.write ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.write ol li {
+  padding: 2px 0;
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 10px;
+  align-items: baseline;
+}
+.write ol li a { border: none; color: var(--ink); font-size: 12px; }
+.write ol li a:hover { background: var(--ink); color: var(--paper); padding: 0 2px; }
+.write ol li .n { color: var(--mute-2); }
+.write ol li .d {
+  color: var(--mute-2);
+  font-size: 10px;
+  letter-spacing: .5px;
+}
+.write .more {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mute-1);
+  border: none;
+}
+.write .more:hover { color: var(--ink); background: transparent; }
+.write .more::before { content: "→ "; }
+
+.mnSig {
+  position: absolute;
+  top: 260px;
+  right: 26px;
+  text-align: right;
+  max-width: 220px;
+}
+.mnSig h2 {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2px 6px 3px;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+.mnSig p { margin: 0; font-size: 12px; color: var(--ink); }
+.mnSig p.a { color: var(--mute-1); margin-top: 1px; }
+.mnSig p.m {
+  color: var(--mute-2);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.mnSig a { color: var(--ink); border-bottom: 1px solid var(--ink); }
+
+.mnSigArt {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin-left: auto;
+  margin-bottom: 8px;
+  overflow: hidden;
+  background: var(--ink);
+}
+.mnSigImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── frames (rotating photo) ─── */
+.frames {
+  position: absolute;
+  top: 560px;
+  right: 26px;
+  text-align: right;
+  max-width: 220px;
+}
+.frames h2 {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: var(--mute-1);
+  text-transform: uppercase;
+  margin: 0 0 8px;
+  font-weight: 400;
+}
+.framesFrame {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin-left: auto;
+  overflow: hidden;
+  background: var(--ink);
+}
+.framesImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 600ms ease-in-out;
+}
+.framesDither {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#0f0f0f 0.6px, transparent 1.1px);
+  background-size: 3px 3px;
+  mix-blend-mode: multiply;
+  opacity: 0.45;
+  pointer-events: none;
+}
+.framesCap {
+  font-size: 10px;
+  color: var(--mute-1);
+  letter-spacing: .5px;
+  margin: 6px 0 0;
+  line-height: 1.4;
+  text-transform: lowercase;
+}
+.framesCap a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.framesCap a:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.framesIdx {
+  font-size: 10px;
+  color: var(--mute-2);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 2px 0 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.links {
+  position: absolute;
+  bottom: 24px;
+  left: 26px;
+  right: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.links .nav { display: flex; gap: 16px; font-size: 11px; letter-spacing: .5px; }
+.links .nav a { border: none; color: var(--ink); }
+.links .nav a:hover { color: var(--mute-1); background: transparent; }
+.links .end {
+  font-size: 10px;
+  color: var(--mute-1);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: right;
+}
+.links .end em { font-style: normal; color: var(--ink); }
+
+@media (max-width: 640px) {
+  .root { min-height: 0; padding-bottom: 260px; }
+  .art { top: auto; bottom: 0; height: 260px; }
+  .id { position: static; padding: 70px 22px 0; max-width: none; }
+  .write { position: static; padding: 26px 22px 0; max-width: none; }
+  .mnSig { position: static; padding: 26px 22px 0; text-align: left; max-width: none; }
+  .mnSigArt { margin-left: 0; }
+  .frames { position: static; padding: 26px 22px 0; max-width: none; text-align: left; }
+  .framesFrame { margin-left: 0; }
+  .links { bottom: 20px; }
+}
