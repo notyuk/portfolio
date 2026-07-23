@@ -58,7 +58,7 @@ export default async function HomePage({
             personal projects
             {" "}
             <em>
-            i write about things sometimes. it's fun
+            placeholder
             </em>
           </p>
         </div>
