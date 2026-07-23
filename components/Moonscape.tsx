@@ -58,19 +58,6 @@ export default function Moonscape({ className }: { className?: string }) {
       <rect x="0" y="580" width="680" height="180" fill="url(#htd)" />
       <rect x="120" y="430" width="70" height="330" fill="url(#htd)" />
       <rect x="215" y="480" width="55" height="280" fill="url(#htd)" />
-
-      {/* astronaut — top-right, tethered by dotted line */}
-      <g fill="#0f0f0f">
-        <rect x="484" y="128" width="4" height="4"/>
-        <rect x="485" y="129" width="2" height="2" fill="#ece7d9"/>
-        <rect x="486" y="130" width="1" height="1" fill="#0f0f0f"/>
-        <rect x="482" y="132" width="8" height="6"/>
-        <rect x="481" y="133" width="1" height="4"/>
-        <rect x="490" y="133" width="1" height="4"/>
-        <rect x="483" y="138" width="2" height="4"/>
-        <rect x="487" y="138" width="2" height="4"/>
-      </g>
-      <line x1="486" y1="138" x2="486" y2="152" stroke="#6a635a" strokeWidth="0.5" strokeDasharray="1 2" />
     </svg>
   );
 }

@@ -63,25 +63,30 @@ export default async function HomePage({
           </p>
         </div>
 
-        <div className={styles.write}>
-          <h2>writing —</h2>
-          <ol>
-            {latest.map((post, i) => (
-              <li key={post.slug}>
-                <span className={styles.n}>{pad(total - i)}</span>
-                <a href={`/blog/${post.slug}`}>{post.title}</a>
-                <span className={styles.d}>{shortDate(post.date)}</span>
-              </li>
-            ))}
-          </ol>
-          <a href="/blog" className={styles.more}>
-            all entries
-          </a>
+        <div className={styles.leftStack}>
+          <div className={styles.write}>
+            <h2>writing —</h2>
+            <ol>
+              {latest.map((post, i) => (
+                <li key={post.slug}>
+                  <span className={styles.n}>{pad(total - i)}</span>
+                  <a href={`/blog/${post.slug}`}>{post.title}</a>
+                  <span className={styles.d}>{shortDate(post.date)}</span>
+                </li>
+              ))}
+            </ol>
+            <a href="/blog" className={styles.more}>
+              all entries
+            </a>
+          </div>
+
+          <Guestbook modkey={modkey} />
         </div>
 
-        <Signal />
-        <Frames photos={photos} />
-        <Guestbook modkey={modkey} />
+        <div className={styles.rightStack}>
+          <Signal />
+          <Frames photos={photos} />
+        </div>
 
         <div className={styles.links}>
           <div className={styles.nav}>

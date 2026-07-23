@@ -5,6 +5,13 @@
   --mute-1: #6a635a;
   --mute-2: #8a8378;
 
+  /* type scale — five steps, used consistently instead of ad hoc sizes */
+  --fs-2xs: 9px;
+  --fs-xs: 10px;
+  --fs-sm: 11px;
+  --fs-base: 12px;
+  --fs-md: 13px;
+
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-geist-mono), 'SF Mono', Consolas, Menlo, monospace;
@@ -59,7 +66,7 @@
 
 .corner {
   position: absolute;
-  font-size: 11px;
+  font-size: var(--fs-sm);
   line-height: 1;
   color: var(--mute-2);
   opacity: 0.55;
@@ -73,7 +80,7 @@
 .tl,
 .tr {
   position: absolute;
-  font-size: 10px;
+  font-size: var(--fs-xs);
   letter-spacing: 1px;
   color: var(--mute-1);
   text-transform: uppercase;
@@ -85,7 +92,7 @@
   color: var(--mute-2);
   letter-spacing: .5px;
   text-transform: none;
-  font-size: 10px;
+  font-size: var(--fs-xs);
   margin: 4px 0 0;
 }
 .tag {
@@ -93,7 +100,7 @@
   color: var(--paper);
   padding: 2px 6px 3px;
   letter-spacing: 1.5px;
-  font-size: 10px;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
 }
 
@@ -104,7 +111,7 @@
   max-width: 300px;
 }
 .id h1 {
-  font-size: 12px;
+  font-size: var(--fs-base);
   font-weight: 500;
   letter-spacing: 2px;
   color: var(--ink);
@@ -112,21 +119,28 @@
   text-transform: lowercase;
 }
 .id p {
-  font-size: 13px;
+  font-size: var(--fs-md);
   margin: 0;
   line-height: 1.55;
   max-width: 28ch;
 }
 .id p em { font-style: normal; color: var(--mute-1); }
 
-.write {
+/* ─── left column stack (writing + guestbook, evenly spaced) ─── */
+.leftStack {
   position: absolute;
   top: 260px;
+  bottom: 70px;
   left: 26px;
-  max-width: 300px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
+
+.write { flex-shrink: 0; }
 .write h2 {
-  font-size: 10px;
+  font-size: var(--fs-xs);
   letter-spacing: 2.5px;
   color: var(--mute-1);
   text-transform: uppercase;
@@ -137,7 +151,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 12px;
+  font-size: var(--fs-base);
   font-variant-numeric: tabular-nums;
 }
 .write ol li {
@@ -147,18 +161,18 @@
   gap: 10px;
   align-items: baseline;
 }
-.write ol li a { border: none; color: var(--ink); font-size: 12px; }
+.write ol li a { border: none; color: var(--ink); font-size: var(--fs-base); }
 .write ol li a:hover { background: var(--ink); color: var(--paper); padding: 0 2px; }
 .write ol li .n { color: var(--mute-2); }
 .write ol li .d {
   color: var(--mute-2);
-  font-size: 10px;
+  font-size: var(--fs-xs);
   letter-spacing: .5px;
 }
 .write .more {
   display: inline-block;
   margin-top: 10px;
-  font-size: 10px;
+  font-size: var(--fs-xs);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--mute-1);
@@ -167,29 +181,34 @@
 .write .more:hover { color: var(--ink); background: transparent; }
 .write .more::before { content: "→ "; }
 
-.mnSig {
+/* ─── right column stack (now playing + frames, evenly spaced) ─── */
+.rightStack {
   position: absolute;
   top: 260px;
   right: 26px;
-  text-align: right;
-  max-width: 220px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
+
+.mnSig { text-align: right; flex-shrink: 0; }
 .mnSig h2 {
   display: inline-block;
   background: var(--ink);
   color: var(--paper);
   padding: 2px 6px 3px;
-  font-size: 10px;
+  font-size: var(--fs-xs);
   letter-spacing: 2.5px;
   text-transform: uppercase;
   margin: 0 0 6px;
   font-weight: 500;
 }
-.mnSig p { margin: 0; font-size: 12px; color: var(--ink); }
+.mnSig p { margin: 0; font-size: var(--fs-base); color: var(--ink); }
 .mnSig p.a { color: var(--mute-1); margin-top: 1px; }
 .mnSig p.m {
   color: var(--mute-2);
-  font-size: 10px;
+  font-size: var(--fs-xs);
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-top: 4px;
@@ -214,15 +233,9 @@
 }
 
 /* ─── frames (rotating photo) ─── */
-.frames {
-  position: absolute;
-  top: 560px;
-  right: 26px;
-  text-align: right;
-  max-width: 220px;
-}
+.frames { text-align: right; flex-shrink: 0; }
 .frames h2 {
-  font-size: 10px;
+  font-size: var(--fs-xs);
   letter-spacing: 2.5px;
   color: var(--mute-1);
   text-transform: uppercase;
@@ -255,7 +268,7 @@
   pointer-events: none;
 }
 .framesCap {
-  font-size: 10px;
+  font-size: var(--fs-xs);
   color: var(--mute-1);
   letter-spacing: .5px;
   margin: 6px 0 0;
@@ -271,7 +284,7 @@
   color: var(--paper);
 }
 .framesIdx {
-  font-size: 10px;
+  font-size: var(--fs-xs);
   color: var(--mute-2);
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -290,11 +303,11 @@
   gap: 20px;
   flex-wrap: wrap;
 }
-.links .nav { display: flex; gap: 16px; font-size: 11px; letter-spacing: .5px; }
+.links .nav { display: flex; gap: 16px; font-size: var(--fs-sm); letter-spacing: .5px; }
 .links .nav a { border: none; color: var(--ink); }
 .links .nav a:hover { color: var(--mute-1); background: transparent; }
 .links .end {
-  font-size: 10px;
+  font-size: var(--fs-xs);
   color: var(--mute-1);
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -302,19 +315,20 @@
 }
 .links .end em { font-style: normal; color: var(--ink); }
 
-/* ─── guestbook (compact widget, fits inside the poster viewport) ─── */
+/* ─── guestbook (compact widget, fills remaining space in leftStack) ─── */
 .guestbook {
-  position: absolute;
-  top: 414px;
-  bottom: 70px;
-  left: 26px;
-  width: 300px;
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   text-align: left;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  background: rgba(236, 231, 217, 0.82);
+  border: 1px solid var(--mute-2);
 }
 .guestbook h2 {
-  font-size: 10px;
+  font-size: var(--fs-xs);
   letter-spacing: 2.5px;
   color: var(--mute-1);
   text-transform: uppercase;
@@ -324,7 +338,7 @@
 }
 .guestbookSub {
   color: var(--mute-1);
-  font-size: 11px;
+  font-size: var(--fs-sm);
   margin: 0 0 8px;
   flex-shrink: 0;
 }
@@ -339,7 +353,7 @@
 .guestbookForm input,
 .guestbookForm textarea {
   font-family: inherit;
-  font-size: 12px;
+  font-size: var(--fs-base);
   color: var(--ink);
   background: var(--paper);
   border: 1px solid var(--mute-2);
@@ -364,7 +378,7 @@
 .guestbookForm button {
   align-self: flex-start;
   font-family: inherit;
-  font-size: 10px;
+  font-size: var(--fs-xs);
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--ink);
@@ -381,12 +395,11 @@
 .guestbookEntries {
   list-style: none;
   margin: 0;
-  padding: 8px 10px;
+  padding-top: 8px;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  background: rgba(236, 231, 217, 0.75);
-  border: 1px solid var(--mute-2);
+  border-top: 1px dashed var(--mute-2);
 }
 .guestbookEntries li {
   padding: 8px 0;
@@ -400,19 +413,19 @@
   gap: 12px;
 }
 .guestbookName {
-  font-size: 11px;
+  font-size: var(--fs-base);
   font-weight: 500;
 }
 .guestbookDate {
   color: var(--mute-2);
-  font-size: 9px;
+  font-size: var(--fs-2xs);
   letter-spacing: .5px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 .guestbookComment {
   margin: 3px 0 0;
-  font-size: 12px;
+  font-size: var(--fs-base);
   line-height: 1.5;
   white-space: pre-wrap;
   word-break: break-word;
@@ -425,7 +438,7 @@
 .guestbookDelete { margin-top: 6px; }
 .guestbookDelete button {
   font-family: inherit;
-  font-size: 10px;
+  font-size: var(--fs-xs);
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--mute-1);
@@ -440,20 +453,23 @@
   .poster { min-height: 0; padding-bottom: 260px; }
   .art { top: auto; bottom: 0; height: 260px; }
   .id { position: static; padding: 70px 22px 0; max-width: none; }
-  .write { position: static; padding: 26px 22px 0; max-width: none; }
-  .mnSig { position: static; padding: 26px 22px 0; text-align: left; max-width: none; }
-  .mnSigArt { margin-left: 0; }
-  .frames { position: static; padding: 26px 22px 0; max-width: none; text-align: left; }
-  .framesFrame { margin-left: 0; }
-  .guestbook {
+  .leftStack,
+  .rightStack {
     position: static;
     top: auto;
     bottom: auto;
     left: auto;
-    transform: none;
+    right: auto;
     width: auto;
     padding: 26px 22px 0;
+    gap: 24px;
   }
+  .rightStack { text-align: left; }
+  .mnSig { text-align: left; }
+  .mnSigArt { margin-left: 0; }
+  .frames { text-align: left; }
+  .framesFrame { margin-left: 0; }
+  .guestbook { padding: 12px 14px; }
   .guestbookEntries { max-height: 220px; }
   .links { bottom: 20px; }
 }
