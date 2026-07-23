@@ -305,11 +305,10 @@
 /* ─── guestbook (compact widget, fits inside the poster viewport) ─── */
 .guestbook {
   position: absolute;
-  top: 150px;
+  top: 414px;
   bottom: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 280px;
+  left: 26px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   text-align: left;
