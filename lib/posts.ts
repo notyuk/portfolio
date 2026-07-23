@@ -24,14 +24,14 @@ export type Post = PostMeta & { contentHtml: string };
 function parseImages(raw: unknown): PostImage[] | undefined {
   if (!Array.isArray(raw)) return undefined;
   return raw
-    .map((item) => {
+    .map((item): PostImage | null => {
       if (typeof item === "string") return { src: item, alt: "" };
       if (item && typeof item === "object" && "src" in item) {
         return { src: String(item.src), alt: String((item as { alt?: string }).alt ?? "") };
       }
       return null;
     })
-    .filter((x): x is PostImage => x !== null);
+    .filter((item): item is PostImage => item !== null);
 }
 
 export function getAllPosts(): PostMeta[] {
