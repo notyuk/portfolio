@@ -28,7 +28,7 @@ export default async function HomePage({
   return (
     <main className={styles.root}>
       <h2 className={styles.sr}>
-        yuksel koc — personal homepage. writing, signal, and links.
+        yuksel koc
       </h2>
 
       <div className={styles.poster}>
