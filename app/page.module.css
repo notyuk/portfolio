@@ -90,9 +90,11 @@
 .tr { top: 20px; right: 24px; text-align: right; }
 .spinner {
   display: inline-block;
-  width: 1ch;
-  color: var(--mute-1);
+  width: 1.4ch;
+  font-size: 15px;
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
+  vertical-align: -1px;
 }
 .tr .p {
   color: var(--mute-2);

@@ -86,10 +86,10 @@ function Sun() {
   const rays = Array.from({ length: 8 }, (_, i) => {
     const angle = (i * 360) / 8;
     const rad = (angle * Math.PI) / 180;
-    const x1 = 500 + Math.cos(rad) * 20;
-    const y1 = 45 + Math.sin(rad) * 20;
-    const x2 = 500 + Math.cos(rad) * 30;
-    const y2 = 45 + Math.sin(rad) * 30;
+    const x1 = 500 + Math.cos(rad) * 19;
+    const y1 = 45 + Math.sin(rad) * 19;
+    const x2 = 500 + Math.cos(rad) * 29;
+    const y2 = 45 + Math.sin(rad) * 29;
     return (
       <line
         key={i}
@@ -98,14 +98,15 @@ function Sun() {
         x2={x2}
         y2={y2}
         stroke="#0f0f0f"
-        strokeWidth="1"
-        opacity="0.45"
+        strokeWidth="2.5"
+        strokeLinecap="square"
+        opacity="0.55"
       />
     );
   });
 
   return (
-    <g>
+    <g shapeRendering="crispEdges">
       <g>
         {rays}
         <animateTransform
@@ -117,28 +118,15 @@ function Sun() {
           repeatCount="indefinite"
         />
       </g>
-      <circle
-        cx="500"
-        cy="45"
-        r="15"
-        fill="none"
-        stroke="#0f0f0f"
-        strokeWidth="1.2"
-        opacity="0.6"
-      />
+      <circle cx="500" cy="45" r="13" fill="#0f0f0f" opacity="0.72" />
+      <circle cx="496" cy="41" r="4" fill="#ece7d9" opacity="0.5" />
     </g>
   );
 }
 
-function CloudBlob({ scale = 1, opacity = 0.35 }: { scale?: number; opacity?: number }) {
+function CloudBlob({ scale = 1, opacity = 0.5 }: { scale?: number; opacity?: number }) {
   return (
-    <g
-      transform={`scale(${scale})`}
-      fill="none"
-      stroke="#0f0f0f"
-      strokeWidth="1"
-      opacity={opacity}
-    >
+    <g transform={`scale(${scale})`} fill="#0f0f0f" opacity={opacity}>
       <circle cx="0" cy="0" r="9" />
       <circle cx="12" cy="-3" r="12" />
       <circle cx="26" cy="0" r="8" />
