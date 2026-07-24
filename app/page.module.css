@@ -305,6 +305,17 @@
   margin: 2px 0 0;
   font-variant-numeric: tabular-nums;
 }
+.framesNav {
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  color: var(--mute-2);
+  background: transparent;
+  border: none;
+  padding: 0 6px;
+  line-height: 1;
+  cursor: pointer;
+}
+.framesNav:hover { color: var(--ink); background: transparent; }
 
 .links {
   position: absolute;
@@ -466,7 +477,17 @@
 @media (max-width: 640px) {
   .poster { min-height: 0; padding-bottom: 260px; }
   .art { top: auto; bottom: 0; height: 260px; }
-  .id { position: static; padding: 70px 22px 0; max-width: none; }
+  .stars { display: none; }
+  .corner { display: none; }
+  .tl,
+  .tr {
+    position: static;
+    text-align: left;
+    padding: 0 22px;
+  }
+  .tl { margin-top: 20px; }
+  .tr { margin-top: 10px; }
+  .id { position: static; padding: 18px 22px 0; max-width: none; }
   .leftStack,
   .rightStack {
     position: static;
@@ -485,5 +506,11 @@
   .framesFrame { margin-left: 0; }
   .guestbook { padding: 12px 14px; }
   .guestbookEntries { max-height: 220px; }
-  .links { bottom: 20px; }
+  .links {
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    padding: 24px 22px 20px;
+  }
 }
