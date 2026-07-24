@@ -88,6 +88,12 @@
 }
 .tl { top: 20px; left: 24px; }
 .tr { top: 20px; right: 24px; text-align: right; }
+.spinner {
+  display: inline-block;
+  width: 1ch;
+  color: var(--mute-1);
+  font-variant-numeric: tabular-nums;
+}
 .tr .p {
   color: var(--mute-2);
   letter-spacing: .5px;
@@ -214,6 +220,12 @@
   margin-top: 4px;
 }
 .mnSig a { color: var(--ink); border-bottom: 1px solid var(--ink); }
+.eq {
+  display: inline-block;
+  letter-spacing: 1px;
+  color: var(--ink);
+  font-variant-numeric: normal;
+}
 
 .mnSigArt {
   position: relative;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import AsciiEqualizer from "./AsciiEqualizer";
 import styles from "@/app/page.module.css";
 
 type Track = {
@@ -69,7 +70,9 @@ export default function Signal() {
             )}
           </p>
           <p className={styles.a}>{track!.artist}</p>
-          <p className={styles.m}>via spotify</p>
+          <p className={styles.m}>
+            via spotify <AsciiEqualizer className={styles.eq} />
+          </p>
         </>
       ) : (
         <p className={styles.m}>quiet</p>

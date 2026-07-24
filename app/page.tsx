@@ -5,6 +5,7 @@ import Frames from "@/components/Frames";
 import Vitals from "@/components/Vitals";
 import GlitchText from "@/components/GlitchText";
 import Guestbook from "@/components/Guestbook";
+import AsciiSpinner from "@/components/AsciiSpinner";
 import { getAllPosts, getAllPhotos, pad, shortDate } from "@/lib/posts";
 import styles from "./page.module.css";
 
@@ -41,7 +42,7 @@ export default async function HomePage({
         <span className={`${styles.corner} ${styles.cornerBr}`} aria-hidden="true">+</span>
 
         <div className={styles.tl}>
-          session {session}
+          <AsciiSpinner className={styles.spinner} /> session {session}
           <Vitals />
         </div>
         <div className={styles.tr}>
