@@ -6,6 +6,7 @@ import Vitals from "@/components/Vitals";
 import GlitchText from "@/components/GlitchText";
 import Guestbook from "@/components/Guestbook";
 import AsciiSpinner from "@/components/AsciiSpinner";
+import Mascot from "@/components/Mascot";
 import { getAllPosts, getAllPhotos, pad, shortDate } from "@/lib/posts";
 import styles from "./page.module.css";
 
@@ -103,6 +104,8 @@ export default async function HomePage({
           </div>
         </div>
       </div>
+
+      <Mascot />
     </main>
   );
 }

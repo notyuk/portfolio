@@ -29,6 +29,18 @@
   border-bottom-color: var(--ink);
 }
 
+/* ─── mascot (fixed, bottom-right, white bg dropped via multiply) ─── */
+.mascot {
+  position: fixed;
+  bottom: 6px;
+  right: 10px;
+  width: 90px;
+  height: auto;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 40;
+}
+
 /* ─── poster (the single-viewport homepage "front page") ─── */
 .poster {
   position: relative;
@@ -227,6 +239,54 @@
   letter-spacing: 1px;
   color: var(--ink);
   font-variant-numeric: normal;
+}
+
+.spinsWrap { margin-top: 10px; flex-shrink: 0; }
+.spins {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.spinRecord {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  border: none;
+  padding: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+.spinRecord:hover { transform: translateY(-3px); }
+.spinRecordActive { transform: translateY(-4px); }
+.spinLabel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--mute-2);
+}
+.spinLabel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.spinHole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 50%;
+  background: var(--paper);
+}
+.spinCaption {
+  font-size: var(--fs-xs);
+  color: var(--mute-1);
+  margin: 6px 0 0;
+  min-height: 12px;
+  text-align: right;
 }
 
 .mnSigArt {

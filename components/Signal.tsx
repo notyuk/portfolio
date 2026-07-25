@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import AsciiEqualizer from "./AsciiEqualizer";
+import RecentSpins from "./RecentSpins";
 import styles from "@/app/page.module.css";
 
 type Track = {
@@ -77,6 +78,7 @@ export default function Signal() {
       ) : (
         <p className={styles.m}>quiet</p>
       )}
+      <RecentSpins />
     </div>
   );
 }
