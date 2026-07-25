@@ -97,7 +97,7 @@ function Sun() {
         y1={y1}
         x2={x2}
         y2={y2}
-        stroke="#0f0f0f"
+        stroke="var(--ink)"
         strokeWidth="2.5"
         strokeLinecap="square"
         opacity="0.55"
@@ -118,15 +118,15 @@ function Sun() {
           repeatCount="indefinite"
         />
       </g>
-      <circle cx="500" cy="45" r="13" fill="#0f0f0f" opacity="0.72" />
-      <circle cx="496" cy="41" r="4" fill="#ece7d9" opacity="0.5" />
+      <circle cx="500" cy="45" r="13" fill="var(--ink)" opacity="0.72" />
+      <circle cx="496" cy="41" r="4" fill="var(--paper)" opacity="0.5" />
     </g>
   );
 }
 
 function CloudBlob({ scale = 1, opacity = 0.5 }: { scale?: number; opacity?: number }) {
   return (
-    <g transform={`scale(${scale})`} fill="#0f0f0f" opacity={opacity}>
+    <g transform={`scale(${scale})`} fill="var(--ink)" opacity={opacity}>
       <circle cx="0" cy="0" r="9" />
       <circle cx="12" cy="-3" r="12" />
       <circle cx="26" cy="0" r="8" />
@@ -180,7 +180,7 @@ function Fog() {
           y={b.y}
           width="1040"
           height={b.h}
-          fill="#8a8378"
+          fill="var(--mute-2)"
           opacity={b.opacity}
         />
       ))}
@@ -196,7 +196,7 @@ function Rain({ intensity }: { intensity: Intensity }) {
     const delay = -(i * 0.15);
     return (
       <g key={i}>
-        <line x1={x} y1="-10" x2={x + 4} y2="6" stroke="#6a635a" strokeWidth="1" opacity="0.4" />
+        <line x1={x} y1="-10" x2={x + 4} y2="6" stroke="var(--mute-1)" strokeWidth="1" opacity="0.4" />
         <animateTransform
           attributeName="transform"
           type="translate"
@@ -221,7 +221,7 @@ function Snow({ intensity }: { intensity: Intensity }) {
     const size = i % 3 === 0 ? 2 : 1;
     return (
       <g key={i}>
-        <rect x={x} y="-6" width={size} height={size} fill="#0f0f0f" opacity="0.5" />
+        <rect x={x} y="-6" width={size} height={size} fill="var(--ink)" opacity="0.5" />
         <animateTransform
           attributeName="transform"
           type="translate"

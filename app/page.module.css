@@ -17,6 +17,7 @@
   font-family: var(--font-geist-mono), 'SF Mono', Consolas, Menlo, monospace;
   font-size: 12px;
   line-height: 1.55;
+  transition: background-color 200ms ease, color 200ms ease;
 }
 .root a {
   color: var(--ink);
@@ -29,14 +30,35 @@
   border-bottom-color: var(--ink);
 }
 
-/* ─── mascot (fixed, bottom-right, white bg dropped via multiply) ─── */
+/* ─── dark theme ─── */
+:global(html[data-theme="dark"]) .root {
+  --paper: #16140f;
+  --ink: #ece7d9;
+  --mute-1: #b3a99a;
+  --mute-2: #8f8574;
+}
+
+.themeToggle {
+  position: absolute;
+  border: none;
+  background: transparent;
+  color: var(--mute-2);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+.themeToggle:hover { color: var(--ink); background: transparent; }
+
+/* ─── mascot (fixed, bottom-right; real alpha transparency, no blend-mode) ─── */
 .mascot {
   position: fixed;
   bottom: 6px;
   right: 10px;
   width: 90px;
   height: auto;
-  mix-blend-mode: multiply;
   pointer-events: none;
   z-index: 40;
 }

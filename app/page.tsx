@@ -7,6 +7,7 @@ import GlitchText from "@/components/GlitchText";
 import Guestbook from "@/components/Guestbook";
 import AsciiSpinner from "@/components/AsciiSpinner";
 import Mascot from "@/components/Mascot";
+import ThemeToggle from "@/components/ThemeToggle";
 import { getAllPosts, getAllPhotos, pad, shortDate } from "@/lib/posts";
 import styles from "./page.module.css";
 
@@ -38,7 +39,7 @@ export default async function HomePage({
         <WeatherFX className={styles.stars} />
 
         <span className={`${styles.corner} ${styles.cornerTl}`} aria-hidden="true">+</span>
-        <span className={`${styles.corner} ${styles.cornerTr}`} aria-hidden="true">+</span>
+        <ThemeToggle className={`${styles.themeToggle} ${styles.cornerTr}`} />
         <span className={`${styles.corner} ${styles.cornerBl}`} aria-hidden="true">+</span>
         <span className={`${styles.corner} ${styles.cornerBr}`} aria-hidden="true">+</span>
 
@@ -98,9 +99,6 @@ export default async function HomePage({
             </a>
             <a href="/rss.xml">feed</a>
             <a href="#guestbook">book</a>
-          </div>
-          <div className={styles.end}>
-            ◼ <em>hi</em> people
           </div>
         </div>
       </div>

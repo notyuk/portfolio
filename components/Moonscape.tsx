@@ -13,10 +13,10 @@ export default function Moonscape({ className }: { className?: string }) {
     >
       <defs>
         <pattern id="ht" x="0" y="0" width="5" height="5" patternUnits="userSpaceOnUse">
-          <circle cx="2.5" cy="2.5" r="1.5" fill="#0f0f0f" />
+          <circle cx="2.5" cy="2.5" r="1.5" fill="var(--ink)" />
         </pattern>
         <pattern id="htd" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.4" fill="#0f0f0f" />
+          <circle cx="2" cy="2" r="1.4" fill="var(--ink)" />
         </pattern>
         <radialGradient id="fade" cx="0.5" cy="0.5" r="0.5">
           <stop offset="60%" stopColor="#000" stopOpacity="1" />
@@ -29,7 +29,7 @@ export default function Moonscape({ className }: { className?: string }) {
       </defs>
 
       {/* stars — near-black */}
-      <g fill="#0f0f0f">
+      <g fill="var(--ink)">
         <rect x="42" y="38" width="1" height="1"/><rect x="88" y="24" width="1" height="1"/>
         <rect x="130" y="52" width="1" height="1"/><rect x="172" y="34" width="1" height="1"/>
         <rect x="220" y="60" width="1" height="1"/><rect x="66" y="80" width="1" height="1"/>
@@ -42,7 +42,7 @@ export default function Moonscape({ className }: { className?: string }) {
         <rect x="210" y="220" width="1" height="1"/><rect x="256" y="266" width="1" height="1"/>
       </g>
       {/* fainter stars — mid grey */}
-      <g fill="#6a635a">
+      <g fill="var(--mute-1)">
         <rect x="60" y="60" width="1" height="1"/><rect x="120" y="30" width="1" height="1"/>
         <rect x="200" y="102" width="1" height="1"/><rect x="80" y="200" width="1" height="1"/>
         <rect x="180" y="260" width="1" height="1"/><rect x="240" y="180" width="1" height="1"/>
