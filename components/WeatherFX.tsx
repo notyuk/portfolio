@@ -61,7 +61,7 @@ export default function WeatherFX({ className }: { className?: string }) {
     <svg
       className={className}
       viewBox="0 0 1000 130"
-      preserveAspectRatio="none"
+      preserveAspectRatio="xMidYMid meet"
       role="img"
       aria-hidden="true"
     >
