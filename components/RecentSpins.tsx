@@ -53,9 +53,25 @@ export default function RecentSpins() {
                 <img src={album.imageUrl} alt="" />
               ) : null}
             </span>
-            <span className={styles.spinHole} aria-hidden="true" />
           </button>
         ))}
+        <svg
+          className={styles.spinsEnd}
+          viewBox="0 0 30 40"
+          role="img"
+          aria-hidden="true"
+        >
+          <path
+            d="M2,40 V6 Q2,2 6,2 H24 Q28,2 28,6 V40"
+            fill="none"
+            stroke="var(--ink)"
+            strokeWidth="1.5"
+          />
+          <circle cx="15" cy="17" r="8" fill="none" stroke="var(--ink)" strokeWidth="1" opacity="0.7" />
+          <circle cx="15" cy="17" r="5.5" fill="none" stroke="var(--ink)" strokeWidth="0.7" opacity="0.5" />
+          <circle cx="15" cy="17" r="3" fill="none" stroke="var(--ink)" strokeWidth="0.7" opacity="0.5" />
+          <circle cx="15" cy="17" r="1.2" fill="var(--ink)" />
+        </svg>
       </div>
       <p className={styles.spinCaption}>
         {active ? `${active.name} — ${active.artist}` : "recent spins"}
