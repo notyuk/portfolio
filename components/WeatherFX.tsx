@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Stars from "./Stars";
 
 type Weather = { tempC: number; condition: string } | null;
 type Category = "sun" | "clouds" | "fog" | "rain" | "snow" | "storm";
@@ -51,7 +50,7 @@ export default function WeatherFX({ className }: { className?: string }) {
   }, []);
 
   if (!weather) {
-    return <Stars className={className} />;
+    return null;
   }
 
   const category = classify(weather.condition);

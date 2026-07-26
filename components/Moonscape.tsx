@@ -28,27 +28,6 @@ export default function Moonscape({ className }: { className?: string }) {
         </mask>
       </defs>
 
-      {/* stars — near-black */}
-      <g fill="var(--ink)">
-        <rect x="42" y="38" width="1" height="1"/><rect x="88" y="24" width="1" height="1"/>
-        <rect x="130" y="52" width="1" height="1"/><rect x="172" y="34" width="1" height="1"/>
-        <rect x="220" y="60" width="1" height="1"/><rect x="66" y="80" width="1" height="1"/>
-        <rect x="112" y="98" width="1" height="1"/><rect x="154" y="120" width="1" height="1"/>
-        <rect x="196" y="88" width="1" height="1"/><rect x="238" y="140" width="1" height="1"/>
-        <rect x="46" y="150" width="1" height="1"/><rect x="94" y="168" width="1" height="1"/>
-        <rect x="140" y="196" width="1" height="1"/><rect x="184" y="180" width="1" height="1"/>
-        <rect x="26" y="220" width="1" height="1"/><rect x="74" y="240" width="1" height="1"/>
-        <rect x="118" y="256" width="1" height="1"/><rect x="164" y="230" width="1" height="1"/>
-        <rect x="210" y="220" width="1" height="1"/><rect x="256" y="266" width="1" height="1"/>
-      </g>
-      {/* fainter stars — mid grey */}
-      <g fill="var(--mute-1)">
-        <rect x="60" y="60" width="1" height="1"/><rect x="120" y="30" width="1" height="1"/>
-        <rect x="200" y="102" width="1" height="1"/><rect x="80" y="200" width="1" height="1"/>
-        <rect x="180" y="260" width="1" height="1"/><rect x="240" y="180" width="1" height="1"/>
-        <rect x="30" y="100" width="1" height="1"/>
-      </g>
-
       {/* moon — halftone circle fading at the edges */}
       <g mask="url(#moonmask)">
         <circle cx="560" cy="620" r="380" fill="url(#ht)" />

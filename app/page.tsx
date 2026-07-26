@@ -1,4 +1,5 @@
 import Moonscape from "@/components/Moonscape";
+import Stars from "@/components/Stars";
 import WeatherFX from "@/components/WeatherFX";
 import Signal from "@/components/Signal";
 import Frames from "@/components/Frames";
@@ -36,6 +37,7 @@ export default async function HomePage({
 
       <div className={styles.poster}>
         <Moonscape className={styles.art} />
+        <Stars className={styles.stars} />
         <WeatherFX className={styles.stars} />
 
         <span className={`${styles.corner} ${styles.cornerTl}`} aria-hidden="true">+</span>

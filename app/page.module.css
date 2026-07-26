@@ -231,7 +231,7 @@
   width: 220px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 }
 
 .mnSig { text-align: right; flex-shrink: 0; }
@@ -313,7 +313,12 @@
 }
 .listenAlongClose:hover { background: var(--ink); color: var(--paper); }
 
-.spinsWrap { margin-top: 4px; flex-shrink: 0; }
+.spinsWrap {
+  margin-top: 6px;
+  padding-top: 5px;
+  border-top: 1px dotted var(--mute-2);
+  flex-shrink: 0;
+}
 .spins {
   display: flex;
   justify-content: flex-end;
@@ -364,8 +369,8 @@
 
 .mnSigArt {
   position: relative;
-  width: 172px;
-  height: 172px;
+  width: 160px;
+  height: 160px;
   margin-left: auto;
   margin-bottom: 8px;
   overflow: hidden;
@@ -391,8 +396,8 @@
 }
 .framesFrame {
   position: relative;
-  width: 172px;
-  height: 172px;
+  width: 160px;
+  height: 160px;
   margin-left: auto;
   overflow: hidden;
   background: var(--ink);
