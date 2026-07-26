@@ -39,6 +39,9 @@ export async function GET() {
       album: data.item.album.name,
       albumImageUrl: data.item.album.images?.[0]?.url ?? "",
       songUrl: data.item.external_urls?.spotify ?? "",
+      progressMs: data.progress_ms ?? 0,
+      durationMs: data.item.duration_ms ?? 0,
+      fetchedAt: Date.now(),
     });
   } catch (error) {
     console.error("SPOTIFY ERROR:", error);

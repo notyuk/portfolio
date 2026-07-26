@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import AsciiEqualizer from "./AsciiEqualizer";
 import RecentSpins from "./RecentSpins";
+import ListenAlong from "./ListenAlong";
 import styles from "@/app/page.module.css";
 
 type Track = {
@@ -12,6 +13,9 @@ type Track = {
   album?: string;
   albumImageUrl?: string;
   songUrl?: string;
+  progressMs?: number;
+  durationMs?: number;
+  fetchedAt?: number;
 };
 
 export default function Signal() {
@@ -74,6 +78,13 @@ export default function Signal() {
           <p className={styles.m}>
             via spotify <AsciiEqualizer className={styles.eq} />
           </p>
+          <ListenAlong
+            title={track!.title!}
+            artist={track!.artist!}
+            progressMs={track!.progressMs ?? 0}
+            durationMs={track!.durationMs ?? 0}
+            fetchedAt={track!.fetchedAt ?? Date.now()}
+          />
         </>
       ) : (
         <p className={styles.m}>quiet</p>
