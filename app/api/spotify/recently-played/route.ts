@@ -37,7 +37,7 @@ export async function GET() {
         artist: item.track.artists.map((a) => a.name).join(", "),
         imageUrl: album.images?.[1]?.url ?? album.images?.[0]?.url ?? "",
       });
-      if (albums.length >= 5) break;
+      if (albums.length >= 7) break;
     }
 
     return NextResponse.json({ albums });

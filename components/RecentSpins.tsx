@@ -74,7 +74,7 @@ export default function RecentSpins() {
         </svg>
       </div>
       <p className={styles.spinCaption}>
-        {active ? `${active.name} — ${active.artist}` : "recent spins"}
+        {active ? `${active.name} — ${active.artist}` : "recently listened"}
       </p>
     </div>
   );
