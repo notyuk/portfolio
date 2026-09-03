@@ -1,5 +1,6 @@
 import { getAllDemos } from "@/lib/demos";
 import { pad } from "@/lib/posts";
+import DemoList from "@/components/DemoList";
 import styles from "./demos.module.css";
 
 export const metadata = {
@@ -22,18 +23,7 @@ export default function DemosIndex() {
         {demos.length === 0 ? (
           <p className={styles.empty}>nothing here yet.</p>
         ) : (
-          <ol className={styles.entries}>
-            {demos.map((demo, i) => (
-              <li key={demo.src}>
-                <span className={styles.n}>{pad(total - i)}</span>
-                <div className={styles.trackInfo}>
-                  <span className={styles.title}>{demo.title}</span>
-                  <audio className={styles.player} src={demo.src} controls preload="none" />
-                </div>
-                <span className={styles.size}>{demo.sizeMb}mb</span>
-              </li>
-            ))}
-          </ol>
+          <DemoList demos={demos} />
         )}
       </div>
     </div>
