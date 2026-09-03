@@ -39,6 +39,7 @@ export default async function HomePage({
         <WeatherFX className={styles.stars} />
 
         <span className={`${styles.corner} ${styles.cornerTl}`} aria-hidden="true">+</span>
+        <a href="/demos" className={styles.demosBtn}>demos</a>
         <ThemeToggle className={`${styles.themeToggle} ${styles.cornerTr}`} />
         <span className={`${styles.corner} ${styles.cornerBl}`} aria-hidden="true">+</span>
         <span className={`${styles.corner} ${styles.cornerBr}`} aria-hidden="true">+</span>
@@ -99,7 +100,6 @@ export default async function HomePage({
             </a>
             <a href="/rss.xml">feed</a>
             <a href="#guestbook">book</a>
-            <a href="/demos">demos</a>
           </div>
         </div>
       </div>

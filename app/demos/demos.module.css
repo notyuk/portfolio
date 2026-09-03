@@ -10,6 +10,7 @@
   font-family: var(--font-geist-mono), 'SF Mono', Consolas, Menlo, monospace;
   font-size: 12px;
   line-height: 1.55;
+  transition: background-color 200ms ease, color 200ms ease;
 }
 .root a {
   color: var(--ink);
@@ -20,6 +21,13 @@
   background: var(--ink);
   color: var(--paper);
   border-bottom-color: var(--ink);
+}
+
+:global(html[data-theme="dark"]) .root {
+  --paper: #16140f;
+  --ink: #ece7d9;
+  --mute-1: #b3a99a;
+  --mute-2: #8f8574;
 }
 
 .page {
