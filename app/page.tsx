@@ -99,6 +99,7 @@ export default async function HomePage({
             </a>
             <a href="/rss.xml">feed</a>
             <a href="#guestbook">book</a>
+            <a href="/demos">demos</a>
           </div>
         </div>
       </div>

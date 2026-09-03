@@ -1,0 +1,90 @@
+.root {
+  --paper: #ece7d9;
+  --ink: #0f0f0f;
+  --mute-1: #6a635a;
+  --mute-2: #8a8378;
+
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-mono), 'SF Mono', Consolas, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.root a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+}
+.root a:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom-color: var(--ink);
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 8px;
+  margin-bottom: 32px;
+}
+.head .home {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  color: var(--mute-1);
+}
+.head .home:hover { color: var(--ink); background: transparent; }
+.head h1 {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.empty {
+  color: var(--mute-1);
+  font-size: 12px;
+}
+
+.entries { list-style: none; margin: 0; padding: 0; }
+.entries li {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px dotted var(--mute-2);
+  align-items: center;
+}
+.entries li .n { color: var(--mute-2); font-variant-numeric: tabular-nums; }
+.entries li .size {
+  color: var(--mute-1);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.trackInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.title {
+  font-size: 13px;
+  text-transform: lowercase;
+}
+.player {
+  width: 100%;
+  height: 32px;
+}
