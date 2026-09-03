@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { execSync } from "node:child_process";
 
 const DEMOS_DIR = path.join(process.cwd(), "public", "demos");
 
@@ -7,7 +8,36 @@ export type Demo = {
   src: string;
   title: string;
   sizeMb: string;
+  dateAdded: string;
 };
+
+function pad(n: number) {
+  return String(n).padStart(2, "0");
+}
+
+function formatDate(d: Date) {
+  return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())}`;
+}
+
+/**
+ * When the file was first committed to git (falls back to filesystem mtime
+ * if there's no git history available, e.g. a shallow clone).
+ */
+function dateAddedFor(filePath: string): Date {
+  try {
+    const relPath = path.relative(process.cwd(), filePath).replace(/\\/g, "/");
+    const out = execSync(
+      `git log --diff-filter=A --follow --format=%aI -1 -- "${relPath}"`,
+      { cwd: process.cwd(), stdio: ["ignore", "pipe", "ignore"] }
+    )
+      .toString()
+      .trim();
+    if (out) return new Date(out);
+  } catch {
+    // git unavailable or no history for this file — fall back below
+  }
+  return fs.statSync(filePath).mtime;
+}
 
 /**
  * Lists any mp3 (or wav/m4a/ogg) file dropped into public/demos/.
@@ -22,7 +52,8 @@ export function getAllDemos(): Demo[] {
     .sort();
 
   return files.map((file) => {
-    const { size } = fs.statSync(path.join(DEMOS_DIR, file));
+    const filePath = path.join(DEMOS_DIR, file);
+    const { size } = fs.statSync(filePath);
     const title = file
       .replace(/\.[^.]+$/, "")
       .replace(/^\d+[-_.]?\s*/, "")
@@ -31,6 +62,7 @@ export function getAllDemos(): Demo[] {
       src: `/demos/${file}`,
       title,
       sizeMb: (size / (1024 * 1024)).toFixed(1),
+      dateAdded: formatDate(dateAddedFor(filePath)),
     };
   });
 }

@@ -35,6 +35,7 @@ export default function DemoTrack({
   src,
   title,
   sizeMb,
+  dateAdded,
   isActive,
   onPlay,
 }: {
@@ -42,6 +43,7 @@ export default function DemoTrack({
   src: string;
   title: string;
   sizeMb: string;
+  dateAdded: string;
   isActive: boolean;
   onPlay: () => void;
 }) {
@@ -173,6 +175,7 @@ export default function DemoTrack({
       </div>
 
       <div className={styles.meta}>
+        <span className={styles.date}>{dateAdded}</span>
         <span className={styles.size}>{sizeMb}mb</span>
         <input
           type="range"

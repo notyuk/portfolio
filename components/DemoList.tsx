@@ -22,6 +22,7 @@ export default function DemoList({ demos }: { demos: Demo[] }) {
           src={demo.src}
           title={demo.title}
           sizeMb={demo.sizeMb}
+          dateAdded={demo.dateAdded}
           isActive={active === demo.src}
           onPlay={() => setActive(demo.src)}
         />
