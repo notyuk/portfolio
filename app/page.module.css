@@ -54,11 +54,10 @@
 
 .demosBtn {
   position: absolute;
-  top: 11px;
-  right: 32px;
-  font-size: var(--fs-xs);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  top: 58px;
+  right: 24px;
+  font-size: var(--fs-sm);
+  letter-spacing: .5px;
   color: var(--mute-2);
   border: none;
   z-index: 5;
@@ -638,6 +637,7 @@
   }
   .tl { margin-top: 20px; }
   .tr { margin-top: 10px; }
+  .demosBtn { top: 11px; right: 34px; }
   .id { position: static; padding: 18px 22px 0; max-width: none; }
   .leftStack,
   .rightStack {
