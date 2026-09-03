@@ -52,10 +52,15 @@ export default function DemoTrack({
   const [bars, setBars] = useState<number[]>(() => Array(BAR_COUNT).fill(0));
   const [duration, setDuration] = useState(0);
   const [current, setCurrent] = useState(0);
+  const [volume, setVolume] = useState(1);
 
   useEffect(() => {
     if (!isActive) audioRef.current?.pause();
   }, [isActive]);
+
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.volume = volume;
+  }, [volume]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -167,7 +172,19 @@ export default function DemoTrack({
         </div>
       </div>
 
-      <span className={styles.size}>{sizeMb}mb</span>
+      <div className={styles.meta}>
+        <span className={styles.size}>{sizeMb}mb</span>
+        <input
+          type="range"
+          className={styles.volume}
+          min={0}
+          max={1}
+          step={0.01}
+          value={volume}
+          onChange={(e) => setVolume(parseFloat(e.target.value))}
+          aria-label="volume"
+        />
+      </div>
 
       <audio ref={audioRef} src={src} preload="metadata" />
     </li>

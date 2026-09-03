@@ -82,13 +82,28 @@
   font-variant-numeric: tabular-nums;
   font-size: 11px;
 }
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  align-self: start;
+  margin-top: 3px;
+}
 .size {
   color: var(--mute-1);
   font-size: 10px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
-  align-self: start;
-  margin-top: 3px;
+}
+
+.volume {
+  width: 60px;
+  height: 12px;
+  margin: 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+  background: transparent;
 }
 
 .playBtn {
@@ -175,4 +190,11 @@
 @media (max-width: 480px) {
   .track { grid-template-columns: 18px 30px 1fr; gap: 10px; }
   .size { display: none; }
+  .meta {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 6px;
+  }
 }
