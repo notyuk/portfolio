@@ -1,15 +1,24 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execSync } from "node:child_process";
+import { redis } from "./redis";
 
 const DEMOS_DIR = path.join(process.cwd(), "public", "demos");
+const TITLES_KEY = "demos:titles";
 
 export type Demo = {
+  file: string;
   src: string;
   title: string;
   sizeMb: string;
   dateAdded: string;
 };
+
+async function getTitleOverrides(): Promise<Record<string, string>> {
+  if (!redis) return {};
+  const map = await redis.hgetall<Record<string, string>>(TITLES_KEY);
+  return map ?? {};
+}
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
@@ -43,7 +52,7 @@ function dateAddedFor(filePath: string): Date {
  * Lists any mp3 (or wav/m4a/ogg) file dropped into public/demos/.
  * Filename becomes the title: "01-late-night-idea.mp3" -> "late night idea".
  */
-export function getAllDemos(): Demo[] {
+export async function getAllDemos(): Promise<Demo[]> {
   if (!fs.existsSync(DEMOS_DIR)) return [];
 
   const files = fs
@@ -51,16 +60,19 @@ export function getAllDemos(): Demo[] {
     .filter((f) => /\.(mp3|wav|m4a|ogg)$/i.test(f))
     .sort();
 
+  const overrides = await getTitleOverrides();
+
   return files.map((file) => {
     const filePath = path.join(DEMOS_DIR, file);
     const { size } = fs.statSync(filePath);
-    const title = file
+    const defaultTitle = file
       .replace(/\.[^.]+$/, "")
       .replace(/^\d+[-_.]?\s*/, "")
       .replace(/[-_]/g, " ");
     return {
+      file,
       src: `/demos/${file}`,
-      title,
+      title: overrides[file] ?? defaultTitle,
       sizeMb: (size / (1024 * 1024)).toFixed(1),
       dateAdded: formatDate(dateAddedFor(filePath)),
     };

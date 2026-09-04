@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { renameDemoTitleAction } from "@/lib/demo-actions";
 import styles from "@/app/demos/demos.module.css";
 
 const LEVELS = "▁▂▃▄▅▆▇█";
@@ -32,20 +33,26 @@ function formatTime(seconds: number) {
 
 export default function DemoTrack({
   n,
+  file,
   src,
   title,
   sizeMb,
   dateAdded,
   isActive,
   onPlay,
+  isModerator,
+  modkey,
 }: {
   n: string;
+  file: string;
   src: string;
   title: string;
   sizeMb: string;
   dateAdded: string;
   isActive: boolean;
   onPlay: () => void;
+  isModerator: boolean;
+  modkey?: string;
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
@@ -172,6 +179,21 @@ export default function DemoTrack({
         <div className={styles.viz} data-playing={playing} aria-hidden="true">
           {bars.map((v) => LEVELS[v]).join("")}
         </div>
+
+        {isModerator && (
+          <form action={renameDemoTitleAction} className={styles.renameForm}>
+            <input type="hidden" name="file" value={file} />
+            <input type="hidden" name="modkey" value={modkey} />
+            <input
+              type="text"
+              name="title"
+              defaultValue={title}
+              maxLength={100}
+              className={styles.renameInput}
+            />
+            <button type="submit" className={styles.renameBtn}>save</button>
+          </form>
+        )}
       </div>
 
       <div className={styles.meta}>

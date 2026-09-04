@@ -9,7 +9,15 @@ function pad(n: number) {
   return String(n).padStart(2, "0");
 }
 
-export default function DemoList({ demos }: { demos: Demo[] }) {
+export default function DemoList({
+  demos,
+  isModerator,
+  modkey,
+}: {
+  demos: Demo[];
+  isModerator: boolean;
+  modkey?: string;
+}) {
   const [active, setActive] = useState<string | null>(null);
   const total = demos.length;
 
@@ -19,12 +27,15 @@ export default function DemoList({ demos }: { demos: Demo[] }) {
         <DemoTrack
           key={demo.src}
           n={pad(total - i)}
+          file={demo.file}
           src={demo.src}
           title={demo.title}
           sizeMb={demo.sizeMb}
           dateAdded={demo.dateAdded}
           isActive={active === demo.src}
           onPlay={() => setActive(demo.src)}
+          isModerator={isModerator}
+          modkey={modkey}
         />
       ))}
     </ol>

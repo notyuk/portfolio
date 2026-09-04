@@ -195,6 +195,38 @@
 }
 .viz[data-playing="true"] { color: var(--ink); }
 
+.renameForm {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.renameInput {
+  flex: 1;
+  min-width: 0;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--mute-2);
+  padding: 3px 6px;
+}
+.renameInput:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+.renameBtn {
+  font-family: inherit;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--mute-2);
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.renameBtn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
 @media (max-width: 480px) {
   .track { grid-template-columns: 18px 30px 1fr; gap: 10px; }
   .size { display: none; }
